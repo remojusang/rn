@@ -17,7 +17,7 @@ export interface ISignForm {
   phone: number;
 }
 function SignScreen({ route, navigation }: SignProps) {
-  const { formState, handleSubmit, control, getValues } =
+  const { formState, handleSubmit, control, getValues, setFocus } =
     useForm<ISignForm>({ mode: 'onChange' });
   const onValid = (form: ISignForm) => {
     //() => navigation.navigate('Sign');
@@ -35,6 +35,7 @@ function SignScreen({ route, navigation }: SignProps) {
             keyboardType: 'email-address',
             placeholder: 'remo@naver.com',
           }}
+          onNext={() => setFocus('password')}
         />
         <FormInput
           label="비밀번호"
@@ -47,6 +48,7 @@ function SignScreen({ route, navigation }: SignProps) {
             secureTextEntry: true,
           }}
           accessibilityHint={ACCESS_HINT.PW}
+          onNext={() => setFocus('passwordCheck')}
         />
         <FormInput
           label="비밀번호 확인"
@@ -59,6 +61,7 @@ function SignScreen({ route, navigation }: SignProps) {
             secureTextEntry: true,
           }}
           accessibilityHint={ACCESS_HINT.PW_CHECK}
+          onNext={() => setFocus('phone')}
         />
         <FormInput
           label="전화번호"

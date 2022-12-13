@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import FormInput from '../components/FormInput';
 import { RootStackParamList } from '../utils/types';
 import { useForm } from 'react-hook-form';
@@ -18,6 +18,7 @@ export interface ILoginForm {
 }
 
 function LoginScreen({ route, navigation }: LoginProps) {
+  const pwRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control } = useForm<ILoginForm>({
     mode: 'onChange',
   });
@@ -25,6 +26,7 @@ function LoginScreen({ route, navigation }: LoginProps) {
     console.log('form', form);
     //navigation.navigate("Home");
   };
+
   return (
     <FormLayout>
       <>
@@ -37,6 +39,7 @@ function LoginScreen({ route, navigation }: LoginProps) {
             keyboardType: 'email-address',
             placeholder: 'remo@naver.com',
           }}
+          onNext={() => pwRef.current?.focus()}
         />
         <FormInput
           label="비밀번호"
@@ -47,6 +50,7 @@ function LoginScreen({ route, navigation }: LoginProps) {
             placeholder: '********',
             secureTextEntry: true,
           }}
+          inputRef={pwRef}
         />
         <View style={styles.gap} />
         <CustomBtn

@@ -4,6 +4,7 @@ import { RootStackParamList, PersonType } from '../utils/types';
 import { userContext } from '../App';
 import ScreenLayout from '../components/ScreenLayout';
 import PersonList from '../components/PersonList';
+import { Text, View } from 'react-native';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -11,7 +12,7 @@ function HomeScreen({ route, navigation }: HomeProps) {
   const userInfo = React.useContext(userContext);
   return (
     <ScreenLayout isLoading={false}>
-      {/* <Text>Home</Text>
+      <Text>Home</Text>
       <View>
         <Text onPress={() => navigation.navigate('Login')}>
           로그인
@@ -21,7 +22,7 @@ function HomeScreen({ route, navigation }: HomeProps) {
         <Text onPress={() => navigation.navigate('Sign')}>
           회원가입
         </Text>
-      </View> */}
+      </View>
       <PersonList isRefreshing={false} onRefresh={() => {}} />
     </ScreenLayout>
   );

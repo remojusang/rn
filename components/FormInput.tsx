@@ -1,4 +1,10 @@
-import React, { memo, useRef, useCallback, useEffect } from 'react';
+import React, {
+  memo,
+  useRef,
+  useCallback,
+  useEffect,
+  RefObject,
+} from 'react';
 import {
   Animated,
   View,
@@ -7,7 +13,7 @@ import {
   KeyboardTypeOptions,
   StyleSheet,
 } from 'react-native';
-import { Controller, Control, Validate } from 'react-hook-form';
+import { Controller, Control } from 'react-hook-form';
 import { REGEX, FORM_ERR_MSG } from '../utils/constants';
 
 interface Props {
@@ -19,6 +25,8 @@ interface Props {
   control: Control<any>;
   passwordVal?: string;
   accessibilityHint?: string;
+  onNext?: () => void;
+  inputRef?: RefObject<TextInput>;
 }
 type ITextInputConfig = {
   keyboardType?: KeyboardTypeOptions;
@@ -36,6 +44,8 @@ function FormInput({
   control,
   passwordVal,
   accessibilityHint = '',
+  onNext = () => {},
+  inputRef,
 }: Props) {
   const aniRef = useRef(new Animated.Value(0));
   const shake = useCallback(() => {
@@ -99,6 +109,8 @@ function FormInput({
               {...textInputConfig}
               autoCapitalize="none"
               accessibilityHint={accessibilityHint}
+              onSubmitEditing={() => onNext()}
+              ref={inputRef}
             />
           )}
         />
@@ -121,6 +133,8 @@ function FormInput({
               {...textInputConfig}
               autoCapitalize="none"
               accessibilityHint={accessibilityHint}
+              onSubmitEditing={() => onNext()}
+              ref={inputRef}
             />
           )}
         />
