@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignScreen from './screens/SignScreen';
+import DetailScreen from './screens/DetailScreen';
 import { RootStackParamList } from './utils/types';
 
 export const userContext = React.createContext(null);
@@ -30,6 +31,7 @@ function App() {
             component={SignScreen}
             options={{ title: '회원가입' }}
           />
+          <Stack.Screen name="Detail" component={DetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </userContext.Provider>

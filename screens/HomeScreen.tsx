@@ -1,10 +1,10 @@
 import React from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { RootStackParamList } from '../utils/types';
+import { RootStackParamList, PersonType } from '../utils/types';
 import { userContext } from '../App';
 import personData from '../utils/personData.json';
-import PersonCell, { Person } from '../components/List';
+import Person from '../components/Person';
 import ScreenLayout from '../components/ScreenLayout';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -25,8 +25,9 @@ function HomeScreen({ route, navigation }: HomeProps) {
         </Text>
       </View> */}
       <FlatList
-        data={personData as Person[]}
-        renderItem={PersonCell}
+        style={{ width: '100%' }}
+        data={personData as PersonType[]}
+        renderItem={props => <Person {...props} />}
         keyExtractor={item => item.name}
       />
     </ScreenLayout>
