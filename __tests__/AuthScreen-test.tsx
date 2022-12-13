@@ -17,7 +17,6 @@ const TEST_PROPS: any = {
   route: jest.fn(),
   navigation: jest.fn(),
 };
-const temp = ' ';
 describe('LoginScreen', () => {
   test('렌더링 테스트', () => {
     const renderedJson = render(
