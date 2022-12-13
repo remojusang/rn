@@ -26,7 +26,6 @@ function LoginScreen({ route, navigation }: LoginProps) {
     console.log('form', form);
     //navigation.navigate("Home");
   };
-
   return (
     <FormLayout>
       <>
