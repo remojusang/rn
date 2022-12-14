@@ -8,4 +8,4 @@
 
 4. 테스트 코드 작성 (렌더링, 유효성검사, 이벤트핸들러)
 
-* [LoginScreen](../../screens/LoginScreen.tsx)
+* [LoginScreen](../screens/LoginScreen.tsx)
