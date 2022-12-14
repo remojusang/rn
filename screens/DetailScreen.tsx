@@ -11,7 +11,7 @@ type DetailProps = NativeStackScreenProps<
 
 function DetailScreen({ route, navigation }: DetailProps) {
   useEffect(() => {
-    if (route.params.name) {
+    if (route.params?.name) {
       navigation.setOptions({
         title: route.params.name,
       });
