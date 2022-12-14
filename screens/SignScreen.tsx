@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../utils/types';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
@@ -17,6 +17,9 @@ export interface ISignForm {
   phone: number;
 }
 function SignScreen({ route, navigation }: SignProps) {
+  const pwRef = useRef<TextInput>(null);
+  const pwCheckRef = useRef<TextInput>(null);
+  const phoneRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control, getValues, setFocus } =
     useForm<ISignForm>({ mode: 'onChange' });
   const onValid = (form: ISignForm) => {
@@ -35,7 +38,7 @@ function SignScreen({ route, navigation }: SignProps) {
             keyboardType: 'email-address',
             placeholder: 'remo@naver.com',
           }}
-          onNext={() => setFocus('password')}
+          onNext={() => pwRef.current?.focus()}
         />
         <FormInput
           label="비밀번호"
@@ -48,7 +51,8 @@ function SignScreen({ route, navigation }: SignProps) {
             secureTextEntry: true,
           }}
           accessibilityHint={ACCESS_HINT.PW}
-          onNext={() => setFocus('passwordCheck')}
+          onNext={() => pwCheckRef.current?.focus()}
+          inputRef={pwRef}
         />
         <FormInput
           label="비밀번호 확인"
@@ -61,7 +65,8 @@ function SignScreen({ route, navigation }: SignProps) {
             secureTextEntry: true,
           }}
           accessibilityHint={ACCESS_HINT.PW_CHECK}
-          onNext={() => setFocus('phone')}
+          onNext={() => phoneRef.current?.focus()}
+          inputRef={pwCheckRef}
         />
         <FormInput
           label="전화번호"
@@ -73,6 +78,7 @@ function SignScreen({ route, navigation }: SignProps) {
             keyboardType: 'phone-pad',
             placeholder: '010-1234-5678',
           }}
+          inputRef={phoneRef}
         />
         <View style={styles.gap} />
         <Text style={styles.tos}>
