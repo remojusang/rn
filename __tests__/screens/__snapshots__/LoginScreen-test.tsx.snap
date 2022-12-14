@@ -2,6 +2,15 @@
 
 exports[`LoginScreen 렌더링 테스트 1`] = `
 <RCTSafeAreaView
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Object {
       "alignItems": "center",
@@ -12,133 +21,7 @@ exports[`LoginScreen 렌더링 테스트 1`] = `
   }
 >
   <View
-    collapsable={false}
-    style={
-      Object {
-        "marginVertical": 16,
-        "transform": Array [
-          Object {
-            "translateX": 0,
-          },
-        ],
-        "width": "100%",
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "marginBottom": 10,
-        }
-      }
-    >
-      <Text
-        style={
-          Object {
-            "color": "black",
-            "fontSize": 16,
-            "fontWeight": "bold",
-          }
-        }
-      >
-        이메일
-      </Text>
-      <Text
-        style={
-          Object {
-            "fontWeight": "300",
-          }
-        }
-      />
-    </View>
-    <TextInput
-      accessibilityHint=""
-      autoCapitalize="none"
-      keyboardType="email-address"
-      onChangeText={[Function]}
-      placeholder="remo@naver.com"
-      style={
-        Object {
-          "backgroundColor": "white",
-          "borderColor": "#000",
-          "borderRadius": 6,
-          "borderWidth": 1,
-          "fontSize": 18,
-          "padding": 10,
-        }
-      }
-    />
-  </View>
-  <View
-    collapsable={false}
-    style={
-      Object {
-        "marginVertical": 16,
-        "transform": Array [
-          Object {
-            "translateX": 0,
-          },
-        ],
-        "width": "100%",
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "marginBottom": 10,
-        }
-      }
-    >
-      <Text
-        style={
-          Object {
-            "color": "black",
-            "fontSize": 16,
-            "fontWeight": "bold",
-          }
-        }
-      >
-        비밀번호
-      </Text>
-      <Text
-        style={
-          Object {
-            "fontWeight": "300",
-          }
-        }
-      />
-    </View>
-    <TextInput
-      accessibilityHint=""
-      autoCapitalize="none"
-      onChangeText={[Function]}
-      placeholder="********"
-      secureTextEntry={true}
-      style={
-        Object {
-          "backgroundColor": "white",
-          "borderColor": "#000",
-          "borderRadius": 6,
-          "borderWidth": 1,
-          "fontSize": 18,
-          "padding": 10,
-        }
-      }
-    />
-  </View>
-  <View
-    style={
-      Object {
-        "marginVertical": 5,
-      }
-    }
-  />
-  <View
+    onLayout={[Function]}
     style={
       Object {
         "width": "100%",
@@ -146,161 +29,306 @@ exports[`LoginScreen 렌더링 테스트 1`] = `
     }
   >
     <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "backgroundColor": "#2F2F33",
-          "borderRadius": 10,
-          "padding": 12,
-        }
-      }
-    >
-      <Text
-        style={
-          Object {
-            "color": "white",
-            "fontSize": 16,
-            "fontWeight": "bold",
-            "textAlign": "center",
-          }
-        }
-      >
-        로그인
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      Object {
-        "marginVertical": 5,
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-  >
-    <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "backgroundColor": "#4649FF",
-          "borderRadius": 10,
-          "padding": 12,
+          "bottom": 0,
         }
       }
     >
       <View
+        collapsable={false}
         style={
           Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "marginVertical": 16,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+            "width": "100%",
           }
         }
       >
-        <Image
-          source={
-            Object {
-              "testUri": "../../../assets/google_logo.png",
-            }
-          }
+        <View
           style={
             Object {
-              "marginRight": 10,
-            }
-          }
-        />
-        <Text
-          style={
-            Object {
-              "color": "white",
-              "fontSize": 16,
-              "fontWeight": "bold",
-              "textAlign": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
             }
           }
         >
-          Google 계정으로 로그인
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            이메일
+          </Text>
+          <Text
+            style={
+              Object {
+                "fontWeight": "300",
+              }
+            }
+          />
+        </View>
+        <TextInput
+          accessibilityHint=""
+          autoCapitalize="none"
+          keyboardType="email-address"
+          onChangeText={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="remo@naver.com"
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderColor": "#000",
+              "borderRadius": 6,
+              "borderWidth": 1,
+              "fontSize": 18,
+              "padding": 10,
+            }
+          }
+        />
       </View>
-    </View>
-  </View>
-  <View
-    style={
-      Object {
-        "backgroundColor": "black",
-        "height": 1,
-        "marginVertical": 10,
-        "width": "100%",
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-  >
-    <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "backgroundColor": "#6C6C6C",
-          "borderRadius": 10,
-          "padding": 12,
-        }
-      }
-    >
-      <Text
+      <View
+        collapsable={false}
         style={
           Object {
-            "color": "white",
-            "fontSize": 16,
-            "fontWeight": "bold",
-            "textAlign": "center",
+            "marginVertical": 16,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+            "width": "100%",
           }
         }
       >
-        회원가입
-      </Text>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            비밀번호
+          </Text>
+          <Text
+            style={
+              Object {
+                "fontWeight": "300",
+              }
+            }
+          />
+        </View>
+        <TextInput
+          accessibilityHint=""
+          autoCapitalize="none"
+          onChangeText={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="********"
+          secureTextEntry={true}
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderColor": "#000",
+              "borderRadius": 6,
+              "borderWidth": 1,
+              "fontSize": 18,
+              "padding": 10,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginVertical": 5,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#2F2F33",
+              "borderRadius": 10,
+              "padding": 12,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "white",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "textAlign": "center",
+              }
+            }
+          >
+            로그인
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "marginVertical": 5,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#4649FF",
+              "borderRadius": 10,
+              "padding": 12,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../assets/google_logo.png",
+                }
+              }
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                }
+              }
+            >
+              Google 계정으로 로그인
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "black",
+            "height": 1,
+            "marginVertical": 10,
+            "width": "100%",
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#6C6C6C",
+              "borderRadius": 10,
+              "padding": 12,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "white",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "textAlign": "center",
+              }
+            }
+          >
+            회원가입
+          </Text>
+        </View>
+      </View>
     </View>
   </View>
 </RCTSafeAreaView>
