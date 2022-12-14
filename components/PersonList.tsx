@@ -17,6 +17,7 @@ function PersonList({ isRefreshing, onRefresh }: Props) {
       data={personData as PersonType[]}
       renderItem={props => <Person {...props} />}
       keyExtractor={item => item.name}
+      showsHorizontalScrollIndicator={false}
     />
   );
 }
