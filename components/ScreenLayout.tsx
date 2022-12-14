@@ -7,20 +7,22 @@ type ScreenLayoutProps = {
 };
 function ScreenLayout({ isLoading, children }: ScreenLayoutProps) {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-        backgroundColor: 'rgba(50,50,50,1)',
-      }}>
-      {isLoading ? (
-        <ActivityIndicator color="white" size="large" />
-      ) : (
-        children
-      )}
-    </View>
+    <>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 20,
+          backgroundColor: 'rgba(50,50,50,1)',
+        }}>
+        {isLoading ? (
+          <ActivityIndicator color="white" size="large" />
+        ) : (
+          children
+        )}
+      </View>
+    </>
   );
 }
 

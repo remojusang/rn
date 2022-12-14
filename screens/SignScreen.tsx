@@ -20,7 +20,7 @@ function SignScreen({ route, navigation }: SignProps) {
   const pwRef = useRef<TextInput>(null);
   const pwCheckRef = useRef<TextInput>(null);
   const phoneRef = useRef<TextInput>(null);
-  const { formState, handleSubmit, control, getValues, setFocus } =
+  const { formState, handleSubmit, control, getValues } =
     useForm<ISignForm>({ mode: 'onChange' });
   const onValid = (form: ISignForm) => {
     //() => navigation.navigate('Sign');
