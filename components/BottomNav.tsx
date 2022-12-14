@@ -18,7 +18,7 @@ function BottomNav() {
         },
       }}>
       <Tabs.Screen
-        name="Home"
+        name="Init"
         options={{
           tabBarIcon: ({ focused, color }) => (
             <TabIcon name="home" color={color} isFocused={focused} />
