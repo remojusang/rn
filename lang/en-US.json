@@ -1,0 +1,7 @@
+{
+    "emailLabel": "email",
+    "pwLabel": "password",
+    "loginBtn": "login",
+    "googleBtn": "login with Google",
+    "signUpBtn": "SignUp"
+}

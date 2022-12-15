@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import { Controller, Control } from 'react-hook-form';
 import { REGEX, FORM_ERR_MSG } from '../utils/constants';
+import { FormattedMessage } from 'react-intl';
 
 interface Props {
   label: string;

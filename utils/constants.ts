@@ -11,7 +11,9 @@ const REGEX: RegexType = {
   phone: /^\d{3}-\d{3,4}-\d{4}$/,
 } as const;
 
-const FORM_ERR_MSG: { [index: string]: string } = {
+type IndexStringObject = { [index: string]: string }
+
+const FORM_ERR_MSG: IndexStringObject = {
   email: '올바른 이메일 패턴이 아닙니다.',
   password: '8~16자 영문 대소문자, 숫자를 사용하세요.',
   required: '해당란을 입력해주세요.',
@@ -31,4 +33,17 @@ const ACCESS_HINT: accessHintType = {
   PW_CHECK: 'password_check',
 } as const;
 
-export { REGEX, FORM_ERR_MSG, ACCESS_HINT };
+const COUNTRIES = ['한글', 'English'];
+
+const countryToLocale: IndexStringObject = {
+  한글: 'ko',
+  English: 'en-US',
+} as const;
+
+export {
+  REGEX,
+  FORM_ERR_MSG,
+  ACCESS_HINT,
+  COUNTRIES,
+  countryToLocale,
+};
