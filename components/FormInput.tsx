@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { Controller, Control } from 'react-hook-form';
 import { REGEX, FORM_ERR_MSG } from '../utils/constants';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 interface Props {
   label: string;
@@ -48,6 +48,7 @@ function FormInput({
   onNext = () => {},
   inputRef,
 }: Props) {
+  const { formatMessage } = useIntl();
   const aniRef = useRef(new Animated.Value(0));
   const shake = useCallback(() => {
     Animated.loop(
@@ -86,7 +87,9 @@ function FormInput({
         },
       ]}>
       <View style={styles.labelContainer}>
-        <Text style={styles.label}>{label}</Text>
+        <Text style={styles.label}>
+          {formatMessage({ id: `${name}Label` })}
+        </Text>
         <Text style={styles.label2}>{label2}</Text>
       </View>
 

@@ -1,9 +1,10 @@
 import SelectDropdown from 'react-native-select-dropdown';
 import { COUNTRIES, countryToLocale } from '../utils/constants';
-import { useUserState, useUserDispatch } from './UserContext';
+import { useSetRecoilState } from 'recoil';
+import { localeState } from './Atoms';
+
 function LangSelector() {
-  const state = useUserState();
-  const dispatch = useUserDispatch();
+  const setLocaleState = useSetRecoilState(localeState);
   return (
     <SelectDropdown
       data={COUNTRIES}
@@ -16,16 +17,13 @@ function LangSelector() {
       buttonTextStyle={{
         fontSize: 16,
       }}
-      onSelect={(selectedItem, index) => {
-        dispatch({
-          type: 'SET_LOCALE',
-          locale: countryToLocale[selectedItem],
-        });
+      onSelect={selectedItem => {
+        setLocaleState(countryToLocale[selectedItem]);
       }}
-      buttonTextAfterSelection={(selectedItem, index) => {
+      buttonTextAfterSelection={selectedItem => {
         return selectedItem;
       }}
-      rowTextForSelection={(item, index) => {
+      rowTextForSelection={item => {
         return item;
       }}
     />
