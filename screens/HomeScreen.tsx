@@ -8,7 +8,7 @@ import { View } from 'react-native';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-function HomeScreen({ route, navigation }: HomeProps) {
+function HomeScreen({}: HomeProps) {
   return (
     <ScreenLayout isLoading={false}>
       <View style={{ width: '100%', alignItems: 'flex-end' }}>

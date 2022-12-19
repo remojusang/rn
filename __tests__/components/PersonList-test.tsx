@@ -1,10 +1,4 @@
-import {
-  screen,
-  render,
-  fireEvent,
-  act,
-  waitForElementToBeRemoved,
-} from '@testing-library/react-native';
+import { screen, render } from '@testing-library/react-native';
 import { PersonType } from '../../utils/types';
 import '@testing-library/jest-native/extend-expect';
 import Person from '../../components/Person';

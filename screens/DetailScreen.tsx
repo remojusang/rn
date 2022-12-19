@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import ScreenLayout from '../components/ScreenLayout';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { RootStackParamList, PersonType } from '../utils/types';
+import { Text } from 'react-native';
+import { RootStackParamList } from '../utils/types';
 
 type DetailProps = NativeStackScreenProps<
   RootStackParamList,
