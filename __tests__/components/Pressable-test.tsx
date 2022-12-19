@@ -6,7 +6,7 @@ import {
 } from '@testing-library/react-native';
 import { ACCESS_HINT } from '../../utils/constants';
 import CustomBtn from '../../components/CustomBtn';
-import ErrorBoundary from '../../components/ErrorBoundary';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { IntlProvider } from 'react-intl';
 
 describe('component', () => {

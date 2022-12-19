@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react-native';
 import LoginScreen from '../../screens/LoginScreen';
-import ErrorBoundary from '../../components/ErrorBoundary';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { IntlProvider } from 'react-intl';
 
 describe('LoginScreen', () => {

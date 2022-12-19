@@ -7,7 +7,7 @@ import {
 import { FORM_ERR_MSG, ACCESS_HINT } from '../../utils/constants';
 import SignScreen from '../../screens/SignScreen';
 import '@testing-library/jest-native/extend-expect';
-import ErrorBoundary from '../../components/ErrorBoundary';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
 
 describe('SignScreen', () => {

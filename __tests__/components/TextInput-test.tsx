@@ -8,7 +8,7 @@ import { FORM_ERR_MSG } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import FormInput from '../../components/FormInput';
 import '@testing-library/jest-native/extend-expect';
-import ErrorBoundary from '../../components/ErrorBoundary';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { IntlProvider } from 'react-intl';
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
