@@ -3,7 +3,7 @@
 exports[`DetailScreen 렌더링 테스트 1`] = `
 <View
   style={
-    Object {
+    {
       "alignItems": "center",
       "backgroundColor": "rgba(50,50,50,1)",
       "flex": 1,
