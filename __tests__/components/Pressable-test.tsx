@@ -7,7 +7,7 @@ import {
 import { ACCESS_HINT } from '../../utils/constants';
 import CustomBtn from '../../components/CustomBtn';
 import { IntlProvider } from 'react-intl';
-const ErrorBoundary = require('../../components/ErrorBoundary');
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 describe('component', () => {
   test('Pressable - onPress 검사', async () => {

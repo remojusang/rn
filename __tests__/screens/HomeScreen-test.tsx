@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react-native';
 import HomeScreen from '../../screens/HomeScreen';
-const ErrorBoundary = require('../../components/ErrorBoundary');
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 // Couldn't find a navigation object. Is your component inside NavigationContainer? 에러 방지 코드
 // https://spin.atomicobject.com/2021/02/24/react-navigation-5-unit-testing-components/
