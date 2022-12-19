@@ -7,6 +7,7 @@ import {
 import { FORM_ERR_MSG, ACCESS_HINT } from '../../utils/constants';
 import SignScreen from '../../screens/SignScreen';
 import '@testing-library/jest-native/extend-expect';
+import ErrorBoundary from '../../components/ErrorBoundary';
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
 
 describe('SignScreen', () => {
@@ -16,14 +17,20 @@ describe('SignScreen', () => {
   };
   test('렌더링 테스트', () => {
     const renderedJson = render(
-      <SignScreen {...TEST_PROPS} />,
+      <ErrorBoundary>
+        <SignScreen {...TEST_PROPS} />,
+      </ErrorBoundary>,
     ).toJSON();
     expect(renderedJson).toMatchSnapshot();
     expect(renderedJson).toBeTruthy();
   });
 
   test('패스워드확인 유효성 검사', async () => {
-    render(<SignScreen {...TEST_PROPS} />);
+    render(
+      <ErrorBoundary>
+        <SignScreen {...TEST_PROPS} />
+      </ErrorBoundary>,
+    );
 
     await act(async () => {
       fireEvent.changeText(

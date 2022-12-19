@@ -8,6 +8,9 @@ import { FORM_ERR_MSG } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import FormInput from '../../components/FormInput';
 import '@testing-library/jest-native/extend-expect';
+import ErrorBoundary from '../../components/ErrorBoundary';
+import { IntlProvider } from 'react-intl';
+
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
 
 describe('TextInput', () => {
@@ -26,7 +29,6 @@ describe('TextInput', () => {
       return (
         <>
           <FormInput
-            label="이메일"
             name="email"
             errorMsg={formState.errors.email?.message}
             control={control}
@@ -35,8 +37,7 @@ describe('TextInput', () => {
             }}
           />
           <FormInput
-            label="비밀번호"
-            label2="8~16자의 영문 대소문자와 숫자 조합"
+            constraintslabel="8~16자의 영문 대소문자와 숫자 조합"
             name="password"
             errorMsg={formState.errors.password?.message}
             control={control}
@@ -48,7 +49,13 @@ describe('TextInput', () => {
       );
     };
 
-    render(<TestComponent />);
+    render(
+      <ErrorBoundary>
+        <IntlProvider locale={'test'} messages={{}}>
+          <TestComponent />
+        </IntlProvider>
+      </ErrorBoundary>,
+    );
 
     await act(async () => {
       await fireEvent.changeText(
@@ -96,8 +103,7 @@ describe('TextInput', () => {
       return (
         <>
           <FormInput
-            label="전화번호"
-            label2="하이픈 포함한 숫자만 입력"
+            constraintslabel="하이픈 포함한 숫자만 입력"
             name="phone"
             errorMsg={formState.errors.phone?.message}
             control={control}
@@ -109,7 +115,13 @@ describe('TextInput', () => {
       );
     };
 
-    render(<TestComponent />);
+    render(
+      <ErrorBoundary>
+        <IntlProvider locale={'test'} messages={{}}>
+          <TestComponent />
+        </IntlProvider>
+      </ErrorBoundary>,
+    );
 
     await act(async () => {
       await fireEvent.changeText(
@@ -132,7 +144,7 @@ describe('TextInput', () => {
     expect(await screen.queryByText(FORM_ERR_MSG.phone)).toBeNull();
   });
 
-  test('TextInput - onChangeText 검사', async () => {
+  test('onChangeText 검사', async () => {
     const TestComponent = () => {
       const { control } = useForm<{ email: string }>({
         mode: 'onChange',
@@ -140,7 +152,6 @@ describe('TextInput', () => {
       return (
         <>
           <FormInput
-            label="이메일"
             name="email"
             errorMsg="test"
             control={control}
@@ -152,7 +163,13 @@ describe('TextInput', () => {
       );
     };
 
-    render(<TestComponent />);
+    render(
+      <ErrorBoundary>
+        <IntlProvider locale={'test'} messages={{}}>
+          <TestComponent />
+        </IntlProvider>
+      </ErrorBoundary>,
+    );
 
     fireEvent.changeText(
       screen.getByPlaceholderText(EMAIL_PLACEHOLDER),
