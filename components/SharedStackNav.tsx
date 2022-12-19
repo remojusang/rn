@@ -4,6 +4,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignScreen from '../screens/SignScreen';
 import { RootStackParamList } from '../utils/types';
+import { useIntl } from 'react-intl';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function SharedStackNav({ screenName }: Props) {
+  const { formatMessage } = useIntl();
   return (
     <Stack.Navigator
       screenOptions={{
@@ -25,20 +27,20 @@ export default function SharedStackNav({ screenName }: Props) {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: '홈' }}
+          options={{ title: formatMessage({ id: 'home' }) }}
         />
       )}
       {screenName === 'Login' && (
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ title: '로그인' }}
+          options={{ title: formatMessage({ id: 'loginBtn' }) }}
         />
       )}
       <Stack.Screen
         name="Sign"
         component={SignScreen}
-        options={{ title: '회원가입' }}
+        options={{ title: formatMessage({ id: 'signUpBtn' }) }}
       />
       <Stack.Screen name="Detail" component={DetailScreen} />
     </Stack.Navigator>

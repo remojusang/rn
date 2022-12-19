@@ -1,0 +1,14 @@
+{
+    "emailLabel": "Eメール",
+    "passwordLabel": "パスワード",
+    "passwordConstraintslabel": "8～16文字の英文大文字と数字の組み合わせ",
+    "passwordCheckLabel": "パスワード確認",
+    "phoneLabel": "電話番号",
+    "phoneConstraintslabel": "ハイフンを含む数字のみを入力",
+    "tos": "下記の会員登録ボタンを押すと、利用規約とプライバシーポリシーに同意したことになります",
+    "loginBtn": "ログイン",
+    "googleBtn": "Googleアカウントでログイン",
+    "signUpBtn": "会員登録",
+    "home": "ホーム"
+}
+  

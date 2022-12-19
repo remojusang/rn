@@ -11,7 +11,7 @@ const REGEX: RegexType = {
   phone: /^\d{3}-\d{3,4}-\d{4}$/,
 } as const;
 
-type IndexStringObject = { [index: string]: string }
+type IndexStringObject = { [index: string]: string };
 
 const FORM_ERR_MSG: IndexStringObject = {
   email: '올바른 이메일 패턴이 아닙니다.',
@@ -33,11 +33,12 @@ const ACCESS_HINT: accessHintType = {
   PW_CHECK: 'password_check',
 } as const;
 
-const COUNTRIES = ['한글', 'English'];
+const COUNTRIES = ['한글', 'English', '日本語'];
 
 const countryToLocale: IndexStringObject = {
   한글: 'ko',
   English: 'en-US',
+  日本語: 'jp',
 } as const;
 
 export {
