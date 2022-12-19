@@ -6,7 +6,6 @@ import {
 } from '@testing-library/react-native';
 import { ACCESS_HINT } from '../../utils/constants';
 import CustomBtn from '../../components/CustomBtn';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { IntlProvider } from 'react-intl';
 
 describe('component', () => {
@@ -21,15 +20,13 @@ describe('component', () => {
     };
 
     render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
-          <CustomBtn
-            isLoading={false}
-            title={BTN_TITLE}
-            onPress={onPressMock}
-          />
-        </IntlProvider>
-      </ErrorBoundary>,
+      <IntlProvider locale={'test'} messages={{}}>
+        <CustomBtn
+          isLoading={false}
+          title={BTN_TITLE}
+          onPress={onPressMock}
+        />
+      </IntlProvider>,
     );
 
     await act(() => {
@@ -43,15 +40,13 @@ describe('component', () => {
     const onPressMock = jest.fn();
 
     render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
-          <CustomBtn
-            isLoading={true}
-            title="로그인"
-            onPress={onPressMock}
-          />
-        </IntlProvider>
-      </ErrorBoundary>,
+      <IntlProvider locale={'test'} messages={{}}>
+        <CustomBtn
+          isLoading={true}
+          title="로그인"
+          onPress={onPressMock}
+        />
+      </IntlProvider>,
     );
 
     expect(

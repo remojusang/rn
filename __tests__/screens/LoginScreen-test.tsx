@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react-native';
 import LoginScreen from '../../screens/LoginScreen';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { IntlProvider } from 'react-intl';
 
 describe('LoginScreen', () => {
@@ -10,11 +9,9 @@ describe('LoginScreen', () => {
       navigation: jest.fn(),
     };
     const renderedJson = render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
-          <LoginScreen {...TEST_PROPS} />,
-        </IntlProvider>
-      </ErrorBoundary>,
+      <IntlProvider locale={'test'} messages={{}}>
+        <LoginScreen {...TEST_PROPS} />,
+      </IntlProvider>,
     ).toJSON();
     expect(renderedJson).toMatchSnapshot();
     expect(renderedJson).toBeTruthy();

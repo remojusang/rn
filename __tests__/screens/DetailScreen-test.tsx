@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react-native';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
 import DetailScreen from '../../screens/DetailScreen';
 
 // Couldn't find a navigation object. Is your component inside NavigationContainer? 에러 방지 코드
@@ -22,9 +21,7 @@ describe('DetailScreen', () => {
       navigation: jest.fn(),
     };
     const renderedJson = render(
-      <ErrorBoundary>
-        <DetailScreen {...TEST_PROPS} />,
-      </ErrorBoundary>,
+      <DetailScreen {...TEST_PROPS} />,
     ).toJSON();
     expect(renderedJson).toMatchSnapshot();
     expect(renderedJson).toBeTruthy();
