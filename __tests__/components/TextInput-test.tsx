@@ -102,7 +102,7 @@ describe('TextInput', () => {
         mode: 'onChange',
       });
       return (
-        <>
+        <ErrorBoundary>
           <FormInput
             constraintslabel="하이픈 포함한 숫자만 입력"
             name="phone"
@@ -112,7 +112,7 @@ describe('TextInput', () => {
               placeholder: PHONE_PLACEHOLDER,
             }}
           />
-        </>
+        </ErrorBoundary>
       );
     };
 
