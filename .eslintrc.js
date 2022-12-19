@@ -11,6 +11,7 @@ module.exports = {
         'no-shadow': 'off',
         'no-undef': 'off',
         'react/react-in-jsx-scope': 'off',
+        'react-native/no-inline-styles': 0,
       },
     },
   ],

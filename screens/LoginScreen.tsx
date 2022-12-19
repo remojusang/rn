@@ -17,7 +17,7 @@ export interface ILoginForm {
   password: string;
 }
 
-function LoginScreen({ route, navigation }: LoginProps) {
+function LoginScreen({ navigation }: LoginProps) {
   const pwRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control } = useForm<ILoginForm>({
     mode: 'onChange',

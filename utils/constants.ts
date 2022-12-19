@@ -6,7 +6,7 @@ type RegexType = {
 };
 
 const REGEX: RegexType = {
-  email: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+  email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
   password: /^[a-zA-Z0-9]{8,16}$/,
   phone: /^\d{3}-\d{3,4}-\d{4}$/,
 } as const;

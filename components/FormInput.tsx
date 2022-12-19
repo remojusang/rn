@@ -71,7 +71,9 @@ function FormInput({
     ).start();
   }, []);
   useEffect(() => {
-    if (!errorMsg) return;
+    if (!errorMsg) {
+      return;
+    }
     shake();
   }, [shake, errorMsg]);
   const isPwCheck = name === 'passwordCheck';

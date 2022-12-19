@@ -19,13 +19,14 @@ export interface ISignForm {
   passwordCheck: string;
   phone: number;
 }
-function SignScreen({ route, navigation }: SignProps) {
+function SignScreen({}: SignProps) {
   const pwRef = useRef<TextInput>(null);
   const pwCheckRef = useRef<TextInput>(null);
   const phoneRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control, getValues } =
     useForm<ISignForm>({ mode: 'onChange' });
   const onValid = (form: ISignForm) => {
+    console.log(form);
     //() => navigation.navigate('Sign');
   };
   const { formatMessage } = useIntl();
