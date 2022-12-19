@@ -18,8 +18,7 @@ import { REGEX, FORM_ERR_MSG } from '../utils/constants';
 import { useIntl } from 'react-intl';
 
 interface Props {
-  label: string;
-  label2?: string;
+  constraintslabel?: string;
   name: 'email' | 'password' | 'passwordCheck' | 'phone';
   errorMsg?: string;
   textInputConfig: ITextInputConfig;
@@ -37,8 +36,7 @@ type ITextInputConfig = {
 };
 
 function FormInput({
-  label,
-  label2,
+  constraintslabel,
   name,
   errorMsg,
   textInputConfig,
@@ -90,7 +88,9 @@ function FormInput({
         <Text style={styles.label}>
           {formatMessage({ id: `${name}Label` })}
         </Text>
-        <Text style={styles.label2}>{label2}</Text>
+        <Text style={styles.constraintslabel}>
+          {constraintslabel}
+        </Text>
       </View>
 
       {/* passwordCheck input인지 아닌지 여부에 따라 Controller의 pattern, rules가 다름 */}
@@ -191,7 +191,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
-  label2: {
+  constraintslabel: {
+    marginLeft: 20,
     fontWeight: '300',
   },
   input: {

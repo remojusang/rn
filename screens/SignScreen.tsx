@@ -7,6 +7,9 @@ import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
 import FormInput from '../components/FormInput';
 import { ACCESS_HINT } from '../utils/constants';
+import { useIntl } from 'react-intl';
+import { useRecoilValue } from 'recoil';
+import { localeState } from '../components/Atoms';
 
 type SignProps = NativeStackScreenProps<RootStackParamList, 'Sign'>;
 
@@ -25,12 +28,12 @@ function SignScreen({ route, navigation }: SignProps) {
   const onValid = (form: ISignForm) => {
     //() => navigation.navigate('Sign');
   };
-
+  const { formatMessage } = useIntl();
+  const locale = useRecoilValue(localeState);
   return (
     <FormLayout>
       <>
         <FormInput
-          label="이메일"
           name="email"
           errorMsg={formState.errors.email?.message}
           control={control}
@@ -41,8 +44,9 @@ function SignScreen({ route, navigation }: SignProps) {
           onNext={() => pwRef.current?.focus()}
         />
         <FormInput
-          label="비밀번호"
-          label2="8~16자의 영문 대소문자와 숫자 조합"
+          constraintslabel={formatMessage({
+            id: 'passwordConstraintslabel',
+          })}
           name="password"
           errorMsg={formState.errors.password?.message}
           control={control}
@@ -55,7 +59,6 @@ function SignScreen({ route, navigation }: SignProps) {
           inputRef={pwRef}
         />
         <FormInput
-          label="비밀번호 확인"
           name="passwordCheck"
           passwordVal={getValues('password')}
           errorMsg={formState.errors.passwordCheck?.message}
@@ -69,8 +72,9 @@ function SignScreen({ route, navigation }: SignProps) {
           inputRef={pwCheckRef}
         />
         <FormInput
-          label="전화번호"
-          label2="하이픈 포함한 숫자만 입력"
+          constraintslabel={formatMessage({
+            id: 'phoneConstraintslabel',
+          })}
           name="phone"
           errorMsg={formState.errors.phone?.message}
           control={control}
@@ -81,15 +85,25 @@ function SignScreen({ route, navigation }: SignProps) {
           inputRef={phoneRef}
         />
         <View style={styles.gap} />
-        <Text style={styles.tos}>
-          아래의 회원가입 버튼을 누르면, {'\n'}{' '}
-          <Text style={styles.strong}>이용규약</Text>과{' '}
-          <Text style={styles.strong}>프라이버시 정책</Text>에 동의한
-          것이 됩니다.
-        </Text>
+
+        {locale === 'ko' && (
+          <Text style={styles.tos}>
+            아래의 회원가입 버튼을 누르면, {'\n'}{' '}
+            <Text style={styles.strong}>이용규약</Text>과{' '}
+            <Text style={styles.strong}>프라이버시 정책</Text>에
+            동의한 것이 됩니다.
+          </Text>
+        )}
+        {locale === 'en-US' && (
+          <Text style={styles.tos}>
+            By clicking the sign up button below, {'\n'} you agree to
+            the <Text style={styles.strong}>Terms of Use</Text> and{' '}
+            <Text style={styles.strong}>Privacy Policy</Text>
+          </Text>
+        )}
         <CustomBtn
-          isLoading={true}
-          title="회원가입"
+          isLoading={false}
+          title="signUpBtn"
           onPress={handleSubmit(onValid)}
         />
       </>

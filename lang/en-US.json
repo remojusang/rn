@@ -1,12 +1,12 @@
 {
-    "emailLabel": "email",
-    "passwordLabel": "password",
-    "passwordLabel2": "8 to 16 letters of uppercase and lowercase letters and numbers",
-    "passwordCheckLabel": "passowrd check",
-    "phoneLabel": "phone",
-    "phoneLabel2": "Enter only numbers including hyphens",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "passwordConstraintslabel": "8 to 16 letters of uppercase and lowercase letters and numbers",
+    "passwordCheckLabel": "Passowrd check",
+    "phoneLabel": "Phone",
+    "phoneConstraintslabel": "Enter only numbers including hyphens",
     "tos": "By clicking the sign up button below, you agree to the Terms of Use and Privacy Policy.",
-    "loginBtn": "login",
-    "googleBtn": "login with Google",
-    "signUpBtn": "SignUp"
+    "loginBtn": "Login",
+    "googleBtn": "Login with Google",
+    "signUpBtn": "Sign up"
 }

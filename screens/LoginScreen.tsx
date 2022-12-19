@@ -30,7 +30,6 @@ function LoginScreen({ route, navigation }: LoginProps) {
     <FormLayout>
       <>
         <FormInput
-          label="이메일"
           name="email"
           errorMsg={formState.errors.email?.message}
           control={control}
@@ -41,7 +40,6 @@ function LoginScreen({ route, navigation }: LoginProps) {
           onNext={() => pwRef.current?.focus()}
         />
         <FormInput
-          label="비밀번호"
           name="password"
           errorMsg={formState.errors.password?.message}
           control={control}
@@ -54,19 +52,20 @@ function LoginScreen({ route, navigation }: LoginProps) {
         <View style={styles.gap} />
         <CustomBtn
           isLoading={false}
-          title="로그인"
+          title="loginBtn"
           onPress={handleSubmit(onValid)}
         />
         <View style={styles.gap} />
         <CustomBtn
           isLoading={false}
+          title="googleBtn"
           isGoogle
           onPress={handleSubmit(onValid)}
         />
         <View style={styles.divider} />
         <CustomBtn
           isLoading={false}
-          title="회원가입"
+          title="signUpBtn"
           color="#6C6C6C"
           onPress={() => navigation.navigate('Sign')}
         />
