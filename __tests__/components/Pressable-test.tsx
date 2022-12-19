@@ -7,6 +7,7 @@ import {
 import { ACCESS_HINT } from '../../utils/constants';
 import CustomBtn from '../../components/CustomBtn';
 import { IntlProvider } from 'react-intl';
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 describe('component', () => {
   test('Pressable - onPress 검사', async () => {
@@ -20,13 +21,16 @@ describe('component', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
-        <CustomBtn
-          isLoading={false}
-          title={BTN_TITLE}
-          onPress={onPressMock}
-        />
-      </IntlProvider>,
+      <ErrorBoundary>
+        <IntlProvider locale={'test'} messages={{}}>
+          <CustomBtn
+            isLoading={false}
+            title={BTN_TITLE}
+            onPress={onPressMock}
+          />
+        </IntlProvider>
+        ,
+      </ErrorBoundary>,
     );
 
     await act(() => {

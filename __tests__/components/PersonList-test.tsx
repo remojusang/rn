@@ -3,6 +3,7 @@ import { PersonType } from '../../utils/types';
 import '@testing-library/jest-native/extend-expect';
 import Person from '../../components/Person';
 import { FlatList } from 'react-native';
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
 // useNavigation 사용시 에러방지 코드
@@ -40,7 +41,11 @@ describe('PersonList', () => {
         />
       );
     };
-    render(<TestComponent />);
+    render(
+      <ErrorBoundary>
+        <TestComponent />
+      </ErrorBoundary>,
+    );
 
     // 리스트에 name이 정상적으로 표시되는지 확인
     expect(

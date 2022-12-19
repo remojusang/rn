@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import FormInput from '../../components/FormInput';
 import '@testing-library/jest-native/extend-expect';
 import { IntlProvider } from 'react-intl';
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
 
@@ -26,7 +27,7 @@ describe('TextInput', () => {
         mode: 'onChange',
       });
       return (
-        <>
+        <ErrorBoundary>
           <FormInput
             name="email"
             errorMsg={formState.errors.email?.message}
@@ -44,14 +45,17 @@ describe('TextInput', () => {
               placeholder: PASSWORD_PLACEHOLDER,
             }}
           />
-        </>
+        </ErrorBoundary>
       );
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
-        <TestComponent />
-      </IntlProvider>,
+      <ErrorBoundary>
+        <IntlProvider locale={'test'} messages={{}}>
+          <TestComponent />
+        </IntlProvider>
+        ,
+      </ErrorBoundary>,
     );
 
     await act(async () => {
@@ -113,9 +117,12 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
-        <TestComponent />
-      </IntlProvider>,
+      <ErrorBoundary>
+        <IntlProvider locale={'test'} messages={{}}>
+          <TestComponent />
+        </IntlProvider>
+        ,
+      </ErrorBoundary>,
     );
 
     await act(async () => {
@@ -159,9 +166,12 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
-        <TestComponent />
-      </IntlProvider>,
+      <ErrorBoundary>
+        <IntlProvider locale={'test'} messages={{}}>
+          <TestComponent />
+        </IntlProvider>
+        ,
+      </ErrorBoundary>,
     );
 
     fireEvent.changeText(
