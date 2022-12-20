@@ -7,7 +7,7 @@ import {
 import { ACCESS_HINT } from '../../utils/constants';
 import CustomBtn from '../../components/CustomBtn';
 import { IntlProvider } from 'react-intl';
-import ErrorBoundary from '../../components/ErrorBoundary';
+import ErrorBoundary from '../../components/MyErrorBoundary';
 import koMsg from '../../lang/ko.json';
 
 describe('component', () => {
