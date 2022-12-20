@@ -8,6 +8,7 @@ import { ACCESS_HINT } from '../../utils/constants';
 import CustomBtn from '../../components/CustomBtn';
 import { IntlProvider } from 'react-intl';
 import ErrorBoundary from '../../components/ErrorBoundary';
+import koMsg from '../../lang/ko.json';
 
 describe('component', () => {
   test('Pressable - onPress 검사', async () => {
@@ -21,7 +22,7 @@ describe('component', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'test'} messages={koMsg}>
         <ErrorBoundary>
           <CustomBtn
             isLoading={false}
@@ -44,7 +45,7 @@ describe('component', () => {
     const onPressMock = jest.fn();
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'test'} messages={koMsg}>
         <ErrorBoundary>
           <CustomBtn
             isLoading={true}

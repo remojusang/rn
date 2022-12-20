@@ -10,6 +10,7 @@ import FormInput from '../../components/FormInput';
 import '@testing-library/jest-native/extend-expect';
 import { IntlProvider } from 'react-intl';
 import ErrorBoundary from '../../components/ErrorBoundary';
+import koMsg from '../../lang/ko.json';
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
 
@@ -50,7 +51,7 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'ko'} messages={koMsg}>
         <ErrorBoundary>
           <TestComponent />
         </ErrorBoundary>
@@ -117,7 +118,7 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'ko'} messages={koMsg}>
         <ErrorBoundary>
           <TestComponent />
         </ErrorBoundary>
@@ -166,7 +167,7 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'ko'} messages={koMsg}>
         <ErrorBoundary>
           <TestComponent />
         </ErrorBoundary>

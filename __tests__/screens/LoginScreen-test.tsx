@@ -2,6 +2,7 @@ import { render } from '@testing-library/react-native';
 import LoginScreen from '../../screens/LoginScreen';
 import { IntlProvider } from 'react-intl';
 import ErrorBoundary from '../../components/ErrorBoundary';
+import koMsg from '../../lang/ko.json';
 
 describe('LoginScreen', () => {
   test('렌더링 테스트', () => {
@@ -10,7 +11,7 @@ describe('LoginScreen', () => {
       navigation: jest.fn(),
     };
     const renderedJson = render(
-      <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'ko'} messages={koMsg}>
         <ErrorBoundary>
           <LoginScreen {...TEST_PROPS} />,
         </ErrorBoundary>
