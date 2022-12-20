@@ -22,16 +22,15 @@ describe('component', () => {
     };
 
     render(
-      <IntlProvider locale={'test'} messages={koMsg}>
-        <ErrorBoundary>
+      <ErrorBoundary>
+        <IntlProvider locale="ko" messages={koMsg}>
           <CustomBtn
             isLoading={false}
             title={BTN_TITLE}
             onPress={onPressMock}
           />
-        </ErrorBoundary>
-        ,
-      </IntlProvider>,
+        </IntlProvider>
+      </ErrorBoundary>,
     );
 
     await act(() => {
@@ -45,7 +44,7 @@ describe('component', () => {
     const onPressMock = jest.fn();
 
     render(
-      <IntlProvider locale={'test'} messages={koMsg}>
+      <IntlProvider locale="ko" messages={koMsg}>
         <ErrorBoundary>
           <CustomBtn
             isLoading={true}

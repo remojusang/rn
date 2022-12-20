@@ -51,7 +51,7 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'ko'} messages={koMsg}>
+      <IntlProvider locale="ko" messages={koMsg}>
         <ErrorBoundary>
           <TestComponent />
         </ErrorBoundary>
@@ -118,7 +118,7 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'ko'} messages={koMsg}>
+      <IntlProvider locale="ko" messages={koMsg}>
         <ErrorBoundary>
           <TestComponent />
         </ErrorBoundary>
@@ -167,7 +167,7 @@ describe('TextInput', () => {
     };
 
     render(
-      <IntlProvider locale={'ko'} messages={koMsg}>
+      <IntlProvider locale="ko" messages={koMsg}>
         <ErrorBoundary>
           <TestComponent />
         </ErrorBoundary>

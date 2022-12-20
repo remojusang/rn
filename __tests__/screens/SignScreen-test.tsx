@@ -7,9 +7,12 @@ import {
 import { FORM_ERR_MSG, ACCESS_HINT } from '../../utils/constants';
 import SignScreen from '../../screens/SignScreen';
 import '@testing-library/jest-native/extend-expect';
-import ErrorBoundary from '../../components/ErrorBoundary';
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
+import koMsg from '../../lang/ko.json';
+import { IntlProvider } from 'react-intl';
+import { RecoilRoot } from 'recoil';
 
+// import ErrorBoundary from '../../components/MyErrorBoundary';
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
 describe('SignScreen', () => {
   const TEST_PROPS: any = {
     route: jest.fn(),
@@ -17,9 +20,11 @@ describe('SignScreen', () => {
   };
   test('렌더링 테스트', () => {
     const renderedJson = render(
-      <ErrorBoundary>
-        <SignScreen {...TEST_PROPS} />,
-      </ErrorBoundary>,
+      <RecoilRoot>
+        <IntlProvider locale="ko" messages={koMsg}>
+          <SignScreen {...TEST_PROPS} />,
+        </IntlProvider>
+      </RecoilRoot>,
     ).toJSON();
     expect(renderedJson).toMatchSnapshot();
     expect(renderedJson).toBeTruthy();
@@ -27,9 +32,11 @@ describe('SignScreen', () => {
 
   test('패스워드확인 유효성 검사', async () => {
     render(
-      <ErrorBoundary>
-        <SignScreen {...TEST_PROPS} />
-      </ErrorBoundary>,
+      <RecoilRoot>
+        <IntlProvider locale="ko" messages={koMsg}>
+          <SignScreen {...TEST_PROPS} />
+        </IntlProvider>
+      </RecoilRoot>,
     );
 
     await act(async () => {

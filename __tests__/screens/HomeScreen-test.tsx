@@ -1,6 +1,8 @@
 import { render } from '@testing-library/react-native';
 import HomeScreen from '../../screens/HomeScreen';
-import ErrorBoundary from '../../components/ErrorBoundary';
+import ErrorBoundary from '../../components/MyErrorBoundary';
+import { IntlProvider } from 'react-intl';
+import koMsg from '../../lang/ko.json';
 
 // Couldn't find a navigation object. Is your component inside NavigationContainer? 에러 방지 코드
 // https://spin.atomicobject.com/2021/02/24/react-navigation-5-unit-testing-components/
@@ -21,9 +23,12 @@ describe('HomeScreen', () => {
       route: jest.fn(),
       navigation: jest.fn(),
     };
+
     const renderedJson = render(
       <ErrorBoundary>
-        <HomeScreen {...TEST_PROPS} />,
+        <IntlProvider locale="ko" messages={koMsg}>
+          <HomeScreen {...TEST_PROPS} />
+        </IntlProvider>
       </ErrorBoundary>,
     ).toJSON();
     expect(renderedJson).toMatchSnapshot();

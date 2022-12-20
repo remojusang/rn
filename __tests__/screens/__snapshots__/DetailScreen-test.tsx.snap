@@ -1,25 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DetailScreen 렌더링 테스트 1`] = `
-<View
-  style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "rgba(50,50,50,1)",
-      "flex": 1,
-      "justifyContent": "center",
-      "padding": 20,
+[
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "rgba(50,50,50,1)",
+        "flex": 1,
+        "justifyContent": "center",
+        "padding": 20,
+      }
     }
-  }
->
-  <Text>
-    name: 
-  </Text>
-  <Text>
-    age: 
-  </Text>
-  <Text>
-    gender: 
-  </Text>
-</View>
+  >
+    <Text>
+      name: 
+    </Text>
+    <Text>
+      age: 
+    </Text>
+    <Text>
+      gender: 
+    </Text>
+  </View>,
+  ",",
+]
 `;

@@ -31,18 +31,14 @@ describe('PersonList', () => {
         age: 22,
       },
     ];
-    const TestComponent = () => {
-      return (
+
+    render(
+      <ErrorBoundary>
         <FlatList
           data={sampleData as PersonType[]}
           renderItem={(props: any) => <Person {...props} />}
           keyExtractor={(item: any) => item.name}
         />
-      );
-    };
-    render(
-      <ErrorBoundary>
-        <TestComponent />
       </ErrorBoundary>,
     );
 

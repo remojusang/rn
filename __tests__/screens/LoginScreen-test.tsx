@@ -11,7 +11,7 @@ describe('LoginScreen', () => {
       navigation: jest.fn(),
     };
     const renderedJson = render(
-      <IntlProvider locale={'ko'} messages={koMsg}>
+      <IntlProvider locale="ko" messages={koMsg}>
         <ErrorBoundary>
           <LoginScreen {...TEST_PROPS} />,
         </ErrorBoundary>
