@@ -10,12 +10,12 @@ describe('LoginScreen', () => {
       navigation: jest.fn(),
     };
     const renderedJson = render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'test'} messages={{}}>
+        <ErrorBoundary>
           <LoginScreen {...TEST_PROPS} />,
-        </IntlProvider>
+        </ErrorBoundary>
         ,
-      </ErrorBoundary>,
+      </IntlProvider>,
     ).toJSON();
     expect(renderedJson).toMatchSnapshot();
     expect(renderedJson).toBeTruthy();

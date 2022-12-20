@@ -50,12 +50,12 @@ describe('TextInput', () => {
     };
 
     render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'test'} messages={{}}>
+        <ErrorBoundary>
           <TestComponent />
-        </IntlProvider>
+        </ErrorBoundary>
         ,
-      </ErrorBoundary>,
+      </IntlProvider>,
     );
 
     await act(async () => {
@@ -117,12 +117,12 @@ describe('TextInput', () => {
     };
 
     render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'test'} messages={{}}>
+        <ErrorBoundary>
           <TestComponent />
-        </IntlProvider>
+        </ErrorBoundary>
         ,
-      </ErrorBoundary>,
+      </IntlProvider>,
     );
 
     await act(async () => {
@@ -166,12 +166,12 @@ describe('TextInput', () => {
     };
 
     render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'test'} messages={{}}>
+        <ErrorBoundary>
           <TestComponent />
-        </IntlProvider>
+        </ErrorBoundary>
         ,
-      </ErrorBoundary>,
+      </IntlProvider>,
     );
 
     fireEvent.changeText(

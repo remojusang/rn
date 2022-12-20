@@ -21,16 +21,16 @@ describe('component', () => {
     };
 
     render(
-      <ErrorBoundary>
-        <IntlProvider locale={'test'} messages={{}}>
+      <IntlProvider locale={'test'} messages={{}}>
+        <ErrorBoundary>
           <CustomBtn
             isLoading={false}
             title={BTN_TITLE}
             onPress={onPressMock}
           />
-        </IntlProvider>
+        </ErrorBoundary>
         ,
-      </ErrorBoundary>,
+      </IntlProvider>,
     );
 
     await act(() => {
@@ -45,11 +45,13 @@ describe('component', () => {
 
     render(
       <IntlProvider locale={'test'} messages={{}}>
-        <CustomBtn
-          isLoading={true}
-          title="로그인"
-          onPress={onPressMock}
-        />
+        <ErrorBoundary>
+          <CustomBtn
+            isLoading={true}
+            title="로그인"
+            onPress={onPressMock}
+          />
+        </ErrorBoundary>
       </IntlProvider>,
     );
 
