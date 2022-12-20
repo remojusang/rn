@@ -10,6 +10,7 @@ import {
   TextStyle,
 } from 'react-native';
 import { ACCESS_HINT } from '../utils/constants';
+import { useIntl } from 'react-intl';
 
 interface Props {
   title?: string;
@@ -26,6 +27,7 @@ function CustomBtn({
   onPress,
   isLoading,
 }: Props) {
+  const { formatMessage } = useIntl();
   return (
     <View style={styles().container}>
       {!isGoogle ? (
@@ -46,7 +48,9 @@ function CustomBtn({
               color="white"
             />
           ) : (
-            <Text style={styles().defaultText}>{title}</Text>
+            <Text style={styles().defaultText}>
+              {formatMessage({ id: title })}
+            </Text>
           )}
         </Pressable>
       ) : (
@@ -73,7 +77,7 @@ function CustomBtn({
                 source={require('../assets/google_logo.png')}
               />
               <Text style={styles().googleText}>
-                Google 계정으로 로그인
+                {formatMessage({ id: title })}
               </Text>
             </View>
           )}

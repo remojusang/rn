@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../utils/types';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
 import FormInput from '../components/FormInput';
 import { ACCESS_HINT } from '../utils/constants';
+import { useIntl } from 'react-intl';
+import { useRecoilValue } from 'recoil';
+import { localeState } from '../components/Atoms';
 
 type SignProps = NativeStackScreenProps<RootStackParamList, 'Sign'>;
 
@@ -16,18 +19,22 @@ export interface ISignForm {
   passwordCheck: string;
   phone: number;
 }
-function SignScreen({ route, navigation }: SignProps) {
+function SignScreen({}: SignProps) {
+  const pwRef = useRef<TextInput>(null);
+  const pwCheckRef = useRef<TextInput>(null);
+  const phoneRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control, getValues } =
     useForm<ISignForm>({ mode: 'onChange' });
   const onValid = (form: ISignForm) => {
+    console.log(form);
     //() => navigation.navigate('Sign');
   };
-
+  const { formatMessage } = useIntl();
+  const locale = useRecoilValue(localeState);
   return (
     <FormLayout>
       <>
         <FormInput
-          label="이메일"
           name="email"
           errorMsg={formState.errors.email?.message}
           control={control}
@@ -35,10 +42,12 @@ function SignScreen({ route, navigation }: SignProps) {
             keyboardType: 'email-address',
             placeholder: 'remo@naver.com',
           }}
+          onNext={() => pwRef.current?.focus()}
         />
         <FormInput
-          label="비밀번호"
-          label2="8~16자의 영문 대소문자와 숫자 조합"
+          constraintslabel={formatMessage({
+            id: 'passwordConstraintslabel',
+          })}
           name="password"
           errorMsg={formState.errors.password?.message}
           control={control}
@@ -47,9 +56,10 @@ function SignScreen({ route, navigation }: SignProps) {
             secureTextEntry: true,
           }}
           accessibilityHint={ACCESS_HINT.PW}
+          onNext={() => pwCheckRef.current?.focus()}
+          inputRef={pwRef}
         />
         <FormInput
-          label="비밀번호 확인"
           name="passwordCheck"
           passwordVal={getValues('password')}
           errorMsg={formState.errors.passwordCheck?.message}
@@ -59,10 +69,13 @@ function SignScreen({ route, navigation }: SignProps) {
             secureTextEntry: true,
           }}
           accessibilityHint={ACCESS_HINT.PW_CHECK}
+          onNext={() => phoneRef.current?.focus()}
+          inputRef={pwCheckRef}
         />
         <FormInput
-          label="전화번호"
-          label2="하이픈 포함한 숫자만 입력"
+          constraintslabel={formatMessage({
+            id: 'phoneConstraintslabel',
+          })}
           name="phone"
           errorMsg={formState.errors.phone?.message}
           control={control}
@@ -70,17 +83,28 @@ function SignScreen({ route, navigation }: SignProps) {
             keyboardType: 'phone-pad',
             placeholder: '010-1234-5678',
           }}
+          inputRef={phoneRef}
         />
         <View style={styles.gap} />
-        <Text style={styles.tos}>
-          아래의 회원가입 버튼을 누르면, {'\n'}{' '}
-          <Text style={styles.strong}>이용규약</Text>과{' '}
-          <Text style={styles.strong}>프라이버시 정책</Text>에 동의한
-          것이 됩니다.
-        </Text>
+
+        {locale === 'ko' && (
+          <Text style={styles.tos}>
+            아래의 회원가입 버튼을 누르면, {'\n'}{' '}
+            <Text style={styles.strong}>이용규약</Text>과{' '}
+            <Text style={styles.strong}>프라이버시 정책</Text>에
+            동의한 것이 됩니다.
+          </Text>
+        )}
+        {locale === 'en-US' && (
+          <Text style={styles.tos}>
+            By clicking the sign up button below, {'\n'} you agree to
+            the <Text style={styles.strong}>Terms of Use</Text> and{' '}
+            <Text style={styles.strong}>Privacy Policy</Text>
+          </Text>
+        )}
         <CustomBtn
-          isLoading={true}
-          title="회원가입"
+          isLoading={false}
+          title="signUpBtn"
           onPress={handleSubmit(onValid)}
         />
       </>

@@ -1,4 +1,10 @@
-import React, { memo, useRef, useCallback, useEffect } from 'react';
+import React, {
+  memo,
+  useRef,
+  useCallback,
+  useEffect,
+  RefObject,
+} from 'react';
 import {
   Animated,
   View,
@@ -7,18 +13,20 @@ import {
   KeyboardTypeOptions,
   StyleSheet,
 } from 'react-native';
-import { Controller, Control, Validate } from 'react-hook-form';
+import { Controller, Control } from 'react-hook-form';
 import { REGEX, FORM_ERR_MSG } from '../utils/constants';
+import { useIntl } from 'react-intl';
 
 interface Props {
-  label: string;
-  label2?: string;
+  constraintslabel?: string;
   name: 'email' | 'password' | 'passwordCheck' | 'phone';
   errorMsg?: string;
   textInputConfig: ITextInputConfig;
   control: Control<any>;
   passwordVal?: string;
   accessibilityHint?: string;
+  onNext?: () => void;
+  inputRef?: RefObject<TextInput>;
 }
 type ITextInputConfig = {
   keyboardType?: KeyboardTypeOptions;
@@ -28,15 +36,17 @@ type ITextInputConfig = {
 };
 
 function FormInput({
-  label,
-  label2,
+  constraintslabel,
   name,
   errorMsg,
   textInputConfig,
   control,
   passwordVal,
   accessibilityHint = '',
+  onNext = () => {},
+  inputRef,
 }: Props) {
+  const { formatMessage } = useIntl();
   const aniRef = useRef(new Animated.Value(0));
   const shake = useCallback(() => {
     Animated.loop(
@@ -61,7 +71,9 @@ function FormInput({
     ).start();
   }, []);
   useEffect(() => {
-    if (!errorMsg) return;
+    if (!errorMsg) {
+      return;
+    }
     shake();
   }, [shake, errorMsg]);
   const isPwCheck = name === 'passwordCheck';
@@ -75,8 +87,12 @@ function FormInput({
         },
       ]}>
       <View style={styles.labelContainer}>
-        <Text style={styles.label}>{label}</Text>
-        <Text style={styles.label2}>{label2}</Text>
+        <Text style={styles.label}>
+          {formatMessage({ id: `${name}Label` })}
+        </Text>
+        <Text style={styles.constraintslabel}>
+          {constraintslabel}
+        </Text>
       </View>
 
       {/* passwordCheck input인지 아닌지 여부에 따라 Controller의 pattern, rules가 다름 */}
@@ -99,6 +115,8 @@ function FormInput({
               {...textInputConfig}
               autoCapitalize="none"
               accessibilityHint={accessibilityHint}
+              onSubmitEditing={() => onNext()}
+              ref={inputRef}
             />
           )}
         />
@@ -121,6 +139,8 @@ function FormInput({
               {...textInputConfig}
               autoCapitalize="none"
               accessibilityHint={accessibilityHint}
+              onSubmitEditing={() => onNext()}
+              ref={inputRef}
             />
           )}
         />
@@ -173,7 +193,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
-  label2: {
+  constraintslabel: {
+    marginLeft: 20,
     fontWeight: '300',
   },
   input: {

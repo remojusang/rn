@@ -1,13 +1,30 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
 type Props = {
   children: React.ReactNode;
 };
 
 function FormLayout({ children }: Props) {
+  const quitKeyboard = () => Keyboard.dismiss();
   return (
-    <SafeAreaView style={styles.container}>{children}</SafeAreaView>
+    <TouchableWithoutFeedback onPress={quitKeyboard}>
+      <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView
+          style={{ width: '100%' }}
+          behavior="position"
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 50 : 0}>
+          {children}
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 

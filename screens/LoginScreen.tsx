@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import FormInput from '../components/FormInput';
 import { RootStackParamList } from '../utils/types';
 import { useForm } from 'react-hook-form';
@@ -17,7 +17,8 @@ export interface ILoginForm {
   password: string;
 }
 
-function LoginScreen({ route, navigation }: LoginProps) {
+function LoginScreen({ navigation }: LoginProps) {
+  const pwRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control } = useForm<ILoginForm>({
     mode: 'onChange',
   });
@@ -29,7 +30,6 @@ function LoginScreen({ route, navigation }: LoginProps) {
     <FormLayout>
       <>
         <FormInput
-          label="이메일"
           name="email"
           errorMsg={formState.errors.email?.message}
           control={control}
@@ -37,9 +37,9 @@ function LoginScreen({ route, navigation }: LoginProps) {
             keyboardType: 'email-address',
             placeholder: 'remo@naver.com',
           }}
+          onNext={() => pwRef.current?.focus()}
         />
         <FormInput
-          label="비밀번호"
           name="password"
           errorMsg={formState.errors.password?.message}
           control={control}
@@ -47,23 +47,25 @@ function LoginScreen({ route, navigation }: LoginProps) {
             placeholder: '********',
             secureTextEntry: true,
           }}
+          inputRef={pwRef}
         />
         <View style={styles.gap} />
         <CustomBtn
           isLoading={false}
-          title="로그인"
+          title="loginBtn"
           onPress={handleSubmit(onValid)}
         />
         <View style={styles.gap} />
         <CustomBtn
           isLoading={false}
+          title="googleBtn"
           isGoogle
           onPress={handleSubmit(onValid)}
         />
         <View style={styles.divider} />
         <CustomBtn
           isLoading={false}
-          title="회원가입"
+          title="signUpBtn"
           color="#6C6C6C"
           onPress={() => navigation.navigate('Sign')}
         />

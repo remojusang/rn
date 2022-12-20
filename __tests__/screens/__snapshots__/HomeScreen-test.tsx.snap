@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeScreen 렌더링 테스트 1`] = `
+<div
+  className="error-screen"
+>
+  <h2>
+    An error has occured
+  </h2>
+  <h4>
+    Cannot read properties of undefined (reading 'getItem')
+  </h4>
+</div>
+`;

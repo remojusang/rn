@@ -1,20 +1,24 @@
-export interface Person {
-  name: string;
-  age: number;
-  gender: string;
-}
+import { useNavigation } from '@react-navigation/native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { PersonType } from '../utils/types';
 
-import { View, Text, StyleSheet } from 'react-native';
-
-export default function List({ item }: { item: Person }) {
+export default function Person({ item }: { item: PersonType }) {
+  const navigation = useNavigation<any>();
+  const handlePress = () => {
+    navigation.navigate('Detail', {
+      name: item.name,
+      age: item.age,
+      gender: item.gender,
+    });
+  };
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={handlePress} style={styles.container}>
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.age}>{item.age} years old</Text>
       <Text style={styles.gender}>
-        {item.gender} {item.gender == 'Male' ? '♂' : '♀'}
+        {item.gender} {item.gender === 'male' ? '♂' : '♀'}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
