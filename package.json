@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "link": "react-native link react-native-vector-icons"
@@ -16,6 +16,8 @@
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/native-stack": "^6.9.4",
     "@types/react-native-vector-icons": "^6.4.12",
+    "expo-camera": "^13.1.0",
+    "expo-media-library": "^15.0.0",
     "react": "18.1.0",
     "react-hook-form": "^7.40.0",
     "react-intl": "^6.2.5",

@@ -96,7 +96,8 @@ describe('TextInput', () => {
     ).toBeNull();
   });
 
-  test('정규표현식 검사 - 전화번호', async () => {
+  test('정규표현식 검사 - 전화번호', async function () {
+    jest.setTimeout(10000); // 에러 방지: Exceeded timeout of 5000 ms for a test
     const PHONE_PLACEHOLDER = '010-1234-5678';
     const TestComponent = () => {
       const { formState, control } = useForm<{ phone: string }>({

@@ -8,6 +8,7 @@ interface Props {
   isRefreshing: boolean;
   onRefresh: () => void;
 }
+
 function PersonList({ isRefreshing, onRefresh }: Props) {
   return (
     <FlatList
@@ -26,7 +27,6 @@ function PersonList({ isRefreshing, onRefresh }: Props) {
       data={personData as PersonType[]}
       renderItem={props => <Person {...props} />}
       keyExtractor={item => item.name}
-      showsVerticalScrollIndicator={false}
     />
   );
 }

@@ -39,6 +39,7 @@ const MyErrorBoundary = Catch(function MyErrorBoundary(
   error?: Error,
 ) {
   if (error) {
+    console.log('error', error);
     return (
       <div className="error-screen">
         <h2>An error has occured</h2>
