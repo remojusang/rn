@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, FlatList } from 'react-native';
 import TabIcon from './TabIcon';
 import { useSetRecoilState } from 'recoil';
 import { personDataState } from '../components/Atoms';
