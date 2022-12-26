@@ -12,3 +12,7 @@ export type PersonType = {
   age: number;
   gender: 'male' | 'female';
 };
+
+export type AlbumImageType = {
+  uri: string;
+};

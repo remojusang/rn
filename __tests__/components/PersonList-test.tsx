@@ -1,7 +1,7 @@
 import { screen, render } from '@testing-library/react-native';
 import { PersonType } from '../../utils/types';
 import '@testing-library/jest-native/extend-expect';
-import Person from '../../components/Person';
+import Person from '../../components/ListItem/Person';
 import { FlatList } from 'react-native';
 import ErrorBoundary from '../../components/MyErrorBoundary';
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native

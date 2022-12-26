@@ -6,7 +6,7 @@ import PersonList from '../components/List';
 import LangSelector from '../components/LangSelector';
 import { View } from 'react-native';
 import { PersonType } from '../utils/types';
-import Person from '../components/Person';
+import Person from '../components/ListItem/Person';
 import personData from '../utils/personData.json';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;

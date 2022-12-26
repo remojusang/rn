@@ -7,12 +7,7 @@ import {
   Asset,
 } from 'react-native-image-picker';
 import CustomBtn from './CustomBtn';
-import {
-  PermissionsAndroid,
-  Platform,
-  Image,
-  View,
-} from 'react-native';
+import { PermissionsAndroid, Platform, View } from 'react-native';
 import ErrorAlert from './ErrorAlert';
 import { CAMERA_ERRCODE } from '../utils/constants';
 import {
@@ -20,6 +15,10 @@ import {
   PERMISSIONS,
   RESULTS,
 } from 'react-native-permissions';
+import List from './List';
+import { AlbumImageType } from '../utils/types';
+import AlbumImage from './ListItem/AlbumImage';
+import FlexGap from './FlexGap';
 
 function CameraModules() {
   const [cameraLoading, setCameraLoading] = useState(false);
@@ -29,8 +28,8 @@ function CameraModules() {
   );
   const cameraOptions: CameraOptions = {
     mediaType: 'photo',
-    // cameraType: 'back',
-    // saveToPhotos: true,
+    cameraType: 'back',
+    saveToPhotos: true,
   };
   const albumOptions: ImageLibraryOptions = {
     mediaType: 'photo',
@@ -60,22 +59,18 @@ function CameraModules() {
   const handleCameraPress = async () => {
     let res;
     setCameraLoading(true);
-    try {
-      res = await request(PERMISSIONS.IOS.CAMERA);
-      console.log('res', typeof res);
-    } catch (error) {
-      console.log(error);
-    }
-    if (res !== 'granted') {
-      return;
-    }
 
+    if (Platform.OS === 'ios') {
+      res = await request(PERMISSIONS.IOS.CAMERA);
+      if (res !== RESULTS.GRANTED) {
+        return;
+      }
+    }
     if (Platform.OS === 'android') {
       await requestExternalStoragePermission();
     }
     const { didCancel, errorCode, errorMessage, assets } =
       await launchCamera(cameraOptions);
-    console.log('errorCode', errorCode, 'errorMessage', errorMessage);
     setCameraLoading(false);
   };
   const handleAlbumPress = async () => {
@@ -105,29 +100,24 @@ function CameraModules() {
         title="Launch Camera"
         color="#852999"
       />
-      <View style={{ marginBottom: 20 }} />
+      <FlexGap />
       <CustomBtn
         isLoading={albumLoading}
         onPress={handleAlbumPress}
         title="Open Album"
         color="#BA94D1"
       />
-      <View style={{ marginBottom: 20 }} />
+      <FlexGap />
       {preview && (
-        <ScrollView>
-          {preview.map(({ uri }, idx) => (
-            <View key={idx} style={{ paddingBottom: 20 }}>
-              <Image
-                style={{
-                  height: 200,
-                  resizeMode: 'cover',
-                  borderRadius: 10,
-                }}
-                source={{ uri: uri as string }}
-              />
-            </View>
-          ))}
-        </ScrollView>
+        <List
+          isRefreshing={false}
+          onRefresh={() => {}}
+          flatListConfig={{
+            data: preview as AlbumImageType[],
+            renderItem: props => <AlbumImage {...props} />,
+            keyExtractor: (item, index) => index + '',
+          }}
+        />
       )}
     </View>
   );

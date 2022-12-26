@@ -4,7 +4,7 @@ import { FlatList, View } from 'react-native';
 interface IFlatListConfig<T> {
   data: T[];
   renderItem: (props: any) => JSX.Element;
-  keyExtractor: (item: any) => string;
+  keyExtractor: (item: any, index?: number) => string;
 }
 
 interface Props<T> {
@@ -38,7 +38,5 @@ function List<T>({
     />
   );
 }
-//personData as PersonType[]
-//props => <Person {...props} />
-//item => item.name
+
 export default List;

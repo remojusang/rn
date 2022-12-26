@@ -6,6 +6,7 @@ import { RootStackParamList } from '../utils/types';
 import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
+import FlexGap from '../components/FlexGap';
 
 export type LoginProps = NativeStackScreenProps<
   RootStackParamList,
@@ -49,13 +50,13 @@ function LoginScreen({ navigation }: LoginProps) {
           }}
           inputRef={pwRef}
         />
-        <View style={styles.gap} />
+        <FlexGap gapSize={10} />
         <CustomBtn
           isLoading={false}
           title="loginBtn"
           onPress={handleSubmit(onValid)}
         />
-        <View style={styles.gap} />
+        <FlexGap gapSize={10} />
         <CustomBtn
           isLoading={false}
           title="googleBtn"
@@ -79,9 +80,6 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   gap: {
     marginVertical: 5,
-  },
-  btnGroup: {
-    marginBottom: 20,
   },
   divider: {
     width: '100%',
