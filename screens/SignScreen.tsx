@@ -103,6 +103,14 @@ function SignScreen({}: SignProps) {
             <Text style={styles.strong}>Privacy Policy</Text>
           </Text>
         )}
+        {locale === 'jp' && (
+          <Text style={styles.tos}>
+            下の会員登録ボタンを押すと, {'\n'}{' '}
+            <Text style={styles.strong}>利用規約</Text> と{' '}
+            <Text style={styles.strong}>プライバシーポリシー</Text>
+            に同意したことになります
+          </Text>
+        )}
         <CustomBtn
           isLoading={false}
           title="signUpBtn"
