@@ -3,6 +3,10 @@ import ScreenLayout from '../components/ScreenLayout';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Text } from 'react-native';
 import { RootStackParamList } from '../utils/types';
+import { Pressable } from 'react-native';
+import TabIcon from '../components/TabIcon';
+import { useSetRecoilState } from 'recoil';
+import { personDataState } from '../components/Atoms';
 
 type DetailProps = NativeStackScreenProps<
   RootStackParamList,
@@ -10,6 +14,7 @@ type DetailProps = NativeStackScreenProps<
 >;
 
 function DetailScreen({ route, navigation }: DetailProps) {
+  const setPersonData = useSetRecoilState(personDataState);
   useEffect(() => {
     if (route.params?.name) {
       navigation.setOptions({
@@ -17,11 +22,29 @@ function DetailScreen({ route, navigation }: DetailProps) {
       });
     }
   }, [navigation, route]);
+  const handlePress = () => {
+    setPersonData(prev =>
+      prev.filter(({ name }) => route.params.name !== name),
+    );
+    navigation.navigate('Home');
+  };
   return (
     <ScreenLayout isLoading={false}>
       <Text>name: {route?.params?.name}</Text>
       <Text>age: {route?.params?.age}</Text>
       <Text>gender: {route?.params?.gender}</Text>
+      <Pressable
+        style={{
+          backgroundColor: '#fff',
+          borderRadius: 30,
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: 60,
+          height: 60,
+        }}
+        onPress={handlePress}>
+        <TabIcon name="trash" color="red" isFocused />
+      </Pressable>
     </ScreenLayout>
   );
 }
