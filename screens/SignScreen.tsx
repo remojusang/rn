@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../utils/types';
-import { Text, StyleSheet, TextInput } from 'react-native';
+import { Text, StyleSheet, TextInput, Alert } from 'react-native';
 import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
@@ -18,17 +18,29 @@ export interface ISignForm {
   email: string;
   password: string;
   passwordCheck: string;
-  phone: number;
+  phone: string;
 }
-function SignScreen({}: SignProps) {
+function SignScreen({ navigation }: SignProps) {
   const pwRef = useRef<TextInput>(null);
   const pwCheckRef = useRef<TextInput>(null);
   const phoneRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control, getValues } =
     useForm<ISignForm>({ mode: 'onChange' });
-  const onValid = (form: ISignForm) => {
-    console.log(form);
-    //() => navigation.navigate('Sign');
+  const onValid = ({ email, password, phone }: ISignForm) => {
+    if (
+      email !== 'test123@naver.com' ||
+      password !== 'remo1234' ||
+      phone !== '010-1234-5678'
+    ) {
+      return;
+    }
+    Alert.alert('알림', '회원가입 완료.', [
+      {
+        text: 'OK',
+        onPress: () =>
+          navigation.navigate('Login', { signedEmail: email }),
+      },
+    ]);
   };
   const { formatMessage } = useIntl();
   const locale = useRecoilValue(localeState);
@@ -101,6 +113,14 @@ function SignScreen({}: SignProps) {
             By clicking the sign up button below, {'\n'} you agree to
             the <Text style={styles.strong}>Terms of Use</Text> and{' '}
             <Text style={styles.strong}>Privacy Policy</Text>
+          </Text>
+        )}
+        {locale === 'jp' && (
+          <Text style={styles.tos}>
+            下の会員登録ボタンを押すと, {'\n'}{' '}
+            <Text style={styles.strong}>利用規約</Text> と{' '}
+            <Text style={styles.strong}>プライバシーポリシー</Text>
+            に同意したことになります
           </Text>
         )}
         <CustomBtn

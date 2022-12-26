@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { View, StyleSheet, TextInput, Alert } from 'react-native';
 import FormInput from '../components/FormInput';
@@ -20,13 +20,19 @@ export interface ILoginForm {
   password: string;
 }
 
-function LoginScreen({ navigation }: LoginProps) {
+function LoginScreen({ route, navigation }: LoginProps) {
+  const { formState, handleSubmit, control, setValue } =
+    useForm<ILoginForm>({
+      mode: 'onChange',
+    });
+  useEffect(() => {
+    if (route.params?.signedEmail) {
+      setValue('email', route.params.signedEmail);
+    }
+  }, [navigation, route, setValue]);
   const setisLoggedIn = useSetRecoilState(isLoggedInState);
   const setUserInfo = useSetRecoilState(userInfoState);
   const pwRef = useRef<TextInput>(null);
-  const { formState, handleSubmit, control } = useForm<ILoginForm>({
-    mode: 'onChange',
-  });
   const onValid = ({ email, password }: ILoginForm) => {
     if (email !== 'test123@naver.com' || password !== 'remo1234') {
       return;

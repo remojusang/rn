@@ -1,7 +1,7 @@
 export type RootStackParamList = {
   Tabs: undefined;
   Home: undefined;
-  Login: undefined;
+  Login: { signedEmail: string } | undefined;
   Sign: undefined;
   Detail: PersonType;
   Camera: undefined;
