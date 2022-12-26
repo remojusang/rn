@@ -6,8 +6,6 @@ jest.mock('react-native-permissions', () =>
   require('react-native-permissions/mock'),
 );
 
-// 에러 방지 => Couldn't find a navigation object. Is your component inside NavigationContainer? 
-// https://spin.atomicobject.com/2021/02/24/react-navigation-5-unit-testing-components/
 jest.mock('@react-navigation/native', () => {
   const actualNav = jest.requireActual('@react-navigation/native');
   return {
