@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Sign: undefined;
   Detail: PersonType;
   Camera: undefined;
+  Profile: undefined;
 };
 
 export type PersonType = {

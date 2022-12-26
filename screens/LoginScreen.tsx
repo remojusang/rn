@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput, Alert } from 'react-native';
 import FormInput from '../components/FormInput';
 import { RootStackParamList } from '../utils/types';
 import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
 import FlexGap from '../components/FlexGap';
+import { isLoggedInState, userInfoState } from '../components/Atoms';
+import { useSetRecoilState } from 'recoil';
 
 export type LoginProps = NativeStackScreenProps<
   RootStackParamList,
@@ -19,13 +21,27 @@ export interface ILoginForm {
 }
 
 function LoginScreen({ navigation }: LoginProps) {
+  const setisLoggedIn = useSetRecoilState(isLoggedInState);
+  const setUserInfo = useSetRecoilState(userInfoState);
   const pwRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control } = useForm<ILoginForm>({
     mode: 'onChange',
   });
-  const onValid = (form: ILoginForm) => {
-    console.log('form', form);
-    //navigation.navigate("Home");
+  const onValid = ({ email, password }: ILoginForm) => {
+    if (email !== 'test123@naver.com' || password !== 'remo1234') {
+      return;
+    }
+    setisLoggedIn(true);
+    setUserInfo(prev => {
+      return {
+        ...prev,
+        email,
+      };
+    });
+    Alert.alert('알림', '로그인 완료.', [
+      { text: 'OK', onPress: () => navigation.navigate('Profile') },
+    ]);
+    navigation.navigate('Profile');
   };
   return (
     <FormLayout>
