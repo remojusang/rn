@@ -1,11 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabIcon from './TabIcon';
 import SharedStackNav from './SharedStackNav';
+import { isLoggedInState } from './Atoms';
+import { useRecoilValue } from 'recoil';
 
 const Tabs = createBottomTabNavigator();
 
 function BottomNav() {
-  const isLoggedIn = false;
+  const isLoggedIn = useRecoilValue(isLoggedInState);
   return (
     <Tabs.Navigator
       screenOptions={{
@@ -32,13 +34,13 @@ function BottomNav() {
           tabBarIcon: ({ focused, color }) =>
             isLoggedIn ? (
               <TabIcon
-                name="heart"
+                name="person"
                 color={color}
                 isFocused={focused}
               />
             ) : (
               <TabIcon
-                name="person"
+                name="log-in"
                 color={color}
                 isFocused={focused}
               />
