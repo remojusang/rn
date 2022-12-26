@@ -1,14 +1,23 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { PersonType } from '../utils/types';
-import Person from './Person';
-import personData from '../utils/personData.json';
 
-interface Props {
+interface IFlatListConfig<T> {
+  data: T[];
+  renderItem: (props: any) => JSX.Element;
+  keyExtractor: (item: any, index?: number) => string;
+}
+
+interface Props<T> {
   isRefreshing: boolean;
   onRefresh: () => void;
+  flatListConfig: IFlatListConfig<T>;
 }
-function PersonList({ isRefreshing, onRefresh }: Props) {
+
+function List<T>({
+  isRefreshing,
+  onRefresh,
+  flatListConfig,
+}: Props<T>) {
   return (
     <FlatList
       ItemSeparatorComponent={() => (
@@ -23,12 +32,11 @@ function PersonList({ isRefreshing, onRefresh }: Props) {
       onRefresh={onRefresh}
       refreshing={isRefreshing}
       style={{ width: '100%' }}
-      data={personData as PersonType[]}
-      renderItem={props => <Person {...props} />}
-      keyExtractor={item => item.name}
-      showsVerticalScrollIndicator={false}
+      data={flatListConfig.data}
+      renderItem={flatListConfig.renderItem}
+      keyExtractor={flatListConfig.keyExtractor}
     />
   );
 }
 
-export default PersonList;
+export default List;

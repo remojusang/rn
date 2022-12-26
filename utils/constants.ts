@@ -41,10 +41,16 @@ const countryToLocale: IndexStringObject = {
   日本語: 'jp',
 } as const;
 
+const CAMERA_ERRCODE: IndexStringObject = {
+  camera_unavailable: 'camera not available on device',
+  permission: 'Permission not satisfied',
+} as const;
+
 export {
   REGEX,
   FORM_ERR_MSG,
   ACCESS_HINT,
   COUNTRIES,
   countryToLocale,
+  CAMERA_ERRCODE,
 };

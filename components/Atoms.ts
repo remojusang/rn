@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const localeState = atom<'ko' | 'en-US' | 'jp'>({
+export const localeState = atom({
   key: 'localeState',
   default: 'ko',
 });

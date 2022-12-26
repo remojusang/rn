@@ -3,6 +3,7 @@ import DetailScreen from '../screens/DetailScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignScreen from '../screens/SignScreen';
+import CameraScreen from '../screens/CameraScreen';
 import { RootStackParamList } from '../utils/types';
 import { useIntl } from 'react-intl';
 
@@ -35,6 +36,13 @@ export default function SharedStackNav({ screenName }: Props) {
           name="Login"
           component={LoginScreen}
           options={{ title: formatMessage({ id: 'loginBtn' }) }}
+        />
+      )}
+      {screenName === 'Camera' && (
+        <Stack.Screen
+          name="Camera"
+          component={CameraScreen}
+          options={{ title: formatMessage({ id: 'camera' }) }}
         />
       )}
       <Stack.Screen

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { PersonType } from '../utils/types';
+import { PersonType } from '../../utils/types';
 
 export default function Person({ item }: { item: PersonType }) {
   const navigation = useNavigation<any>();

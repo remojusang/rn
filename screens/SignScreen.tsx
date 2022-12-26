@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../utils/types';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { Text, StyleSheet, TextInput } from 'react-native';
 import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
@@ -10,6 +10,7 @@ import { ACCESS_HINT } from '../utils/constants';
 import { useIntl } from 'react-intl';
 import { useRecoilValue } from 'recoil';
 import { localeState } from '../components/Atoms';
+import FlexGap from '../components/FlexGap';
 
 type SignProps = NativeStackScreenProps<RootStackParamList, 'Sign'>;
 
@@ -85,7 +86,7 @@ function SignScreen({}: SignProps) {
           }}
           inputRef={phoneRef}
         />
-        <View style={styles.gap} />
+        <FlexGap gapSize={10} />
 
         {locale === 'ko' && (
           <Text style={styles.tos}>
@@ -115,12 +116,6 @@ function SignScreen({}: SignProps) {
 export default SignScreen;
 
 const styles = StyleSheet.create({
-  gap: {
-    marginVertical: 5,
-  },
-  btnGroup: {
-    marginBottom: 20,
-  },
   // termOfService
   tos: {
     width: '100%',

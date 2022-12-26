@@ -11,8 +11,9 @@ import koMsg from '../../lang/ko.json';
 import { IntlProvider } from 'react-intl';
 import { RecoilRoot } from 'recoil';
 
-// import ErrorBoundary from '../../components/MyErrorBoundary';
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
+// 에러방지 => https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+
 describe('SignScreen', () => {
   const TEST_PROPS: any = {
     route: jest.fn(),

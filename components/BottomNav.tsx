@@ -52,6 +52,15 @@ function BottomNav() {
           )
         }
       </Tabs.Screen>
+      <Tabs.Screen
+        name="Images"
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <TabIcon name="image" color={color} isFocused={focused} />
+          ),
+        }}>
+        {() => <SharedStackNav screenName="Camera" />}
+      </Tabs.Screen>
     </Tabs.Navigator>
   );
 }

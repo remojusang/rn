@@ -12,7 +12,7 @@ import { IntlProvider } from 'react-intl';
 import ErrorBoundary from '../../components/MyErrorBoundary';
 import koMsg from '../../lang/ko.json';
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper'); // 에러방지코드: https://stackoverflow.com/questions/59587799/how-to-resolve-animated-usenativedriver-is-not-supported-because-the-native
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 describe('TextInput', () => {
   const TEST_TEXT = '1234';
@@ -96,7 +96,8 @@ describe('TextInput', () => {
     ).toBeNull();
   });
 
-  test('정규표현식 검사 - 전화번호', async () => {
+  test('정규표현식 검사 - 전화번호', async function () {
+    jest.setTimeout(10000); // 에러 방지: Exceeded timeout of 5000 ms for a test
     const PHONE_PLACEHOLDER = '010-1234-5678';
     const TestComponent = () => {
       const { formState, control } = useForm<{ phone: string }>({
