@@ -69,8 +69,7 @@ function CameraModules() {
     if (Platform.OS === 'android') {
       await requestExternalStoragePermission();
     }
-    const { didCancel, errorCode, errorMessage, assets } =
-      await launchCamera(cameraOptions);
+    const {} = await launchCamera(cameraOptions);
     setCameraLoading(false);
   };
   const handleAlbumPress = async () => {

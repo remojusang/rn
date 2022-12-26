@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../utils/types';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { Text, StyleSheet, TextInput } from 'react-native';
 import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
