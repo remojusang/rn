@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, FlatList } from 'react-native';
+import { Pressable } from 'react-native';
 import TabIcon from './TabIcon';
 import { useSetRecoilState } from 'recoil';
 import { personDataState } from '../components/Atoms';
@@ -16,7 +16,7 @@ function FloatingBtn() {
   return (
     <Pressable
       style={{
-        backgroundColor: '#fff',
+        backgroundColor: '#82C3EC',
         borderRadius: 30,
         width: 60,
         height: 60,
@@ -27,7 +27,7 @@ function FloatingBtn() {
         right: 30,
       }}
       onPress={handlePress}>
-      <TabIcon name="add" color="#000" isFocused />
+      <TabIcon name="add" color="#fff" size={50} isFocused />
     </Pressable>
   );
 }

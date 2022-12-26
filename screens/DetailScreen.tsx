@@ -35,15 +35,13 @@ function DetailScreen({ route, navigation }: DetailProps) {
       <Text>gender: {route?.params?.gender}</Text>
       <Pressable
         style={{
-          backgroundColor: '#fff',
-          borderRadius: 30,
           justifyContent: 'center',
           alignItems: 'center',
           width: 60,
           height: 60,
         }}
         onPress={handlePress}>
-        <TabIcon name="trash" color="red" isFocused />
+        <TabIcon name="trash" color="red" size={40} isFocused />
       </Pressable>
     </ScreenLayout>
   );
