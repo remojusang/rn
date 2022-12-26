@@ -7,11 +7,14 @@ import LangSelector from '../components/LangSelector';
 import { View } from 'react-native';
 import { PersonType } from '../utils/types';
 import Person from '../components/ListItem/Person';
-import personData from '../utils/personData.json';
+import { personDataState } from '../components/Atoms';
+import FloatingBtn from '../components/FloatingBtn';
+import { useRecoilState } from 'recoil';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 function HomeScreen({}: HomeProps) {
+  const personData = useRecoilState(personDataState);
   return (
     <ScreenLayout isLoading={false}>
       <View style={{ width: '100%', alignItems: 'flex-end' }}>
@@ -21,11 +24,12 @@ function HomeScreen({}: HomeProps) {
         isRefreshing={false}
         onRefresh={() => {}}
         flatListConfig={{
-          data: personData as PersonType[],
+          data: personData[0] as PersonType[],
           renderItem: props => <Person {...props} />,
           keyExtractor: item => item.name,
         }}
       />
+      <FloatingBtn />
     </ScreenLayout>
   );
 }
