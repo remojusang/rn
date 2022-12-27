@@ -19,10 +19,15 @@ function List<T>({
   flatListConfig,
 }: Props<T>) {
   const flatListRef = useRef<FlatList>(null);
+  const handleEndReached = () => {
+    // fetchMore()
+  };
   return (
     <FlatList
       ref={flatListRef}
       onContentSizeChange={() => flatListRef.current?.scrollToEnd()}
+      onEndReached={handleEndReached}
+      onEndReachedThreshold={0.02}
       ItemSeparatorComponent={() => (
         <View
           style={{
