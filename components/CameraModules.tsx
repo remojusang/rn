@@ -38,6 +38,13 @@ function CameraModules() {
   };
   const requestExternalStoragePermission = async () => {
     try {
+      if (
+        await PermissionsAndroid.check(
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        )
+      ) {
+        return;
+      }
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         {
