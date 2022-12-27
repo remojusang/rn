@@ -1,7 +1,5 @@
 import Icon from 'react-native-vector-icons/Ionicons';
 
-Icon.loadFont();
-
 interface Props {
   name: string;
   color: string;
