@@ -1,4 +1,9 @@
-import { render } from '@testing-library/react-native';
+import {
+  screen,
+  render,
+  fireEvent,
+  act,
+} from '@testing-library/react-native';
 import HomeScreen from '../../screens/HomeScreen';
 import ErrorBoundary from '../../components/MyErrorBoundary';
 import { IntlProvider } from 'react-intl';
@@ -23,11 +28,11 @@ jest.spyOn(RN, 'FlatList', 'get').mockImplementation(() => {
 });
 
 describe('HomeScreen', () => {
+  const TEST_PROPS: any = {
+    route: jest.fn(),
+    navigation: jest.fn(),
+  };
   test('렌더링 테스트', () => {
-    const TEST_PROPS: any = {
-      route: jest.fn(),
-      navigation: jest.fn(),
-    };
     const renderedJson = render(
       <ErrorBoundary>
         <IntlProvider locale="ko" messages={koMsg}>
@@ -37,5 +42,18 @@ describe('HomeScreen', () => {
     ).toJSON();
     expect(renderedJson).toMatchSnapshot();
     expect(renderedJson).toBeTruthy();
+  });
+  test('아이템 추가', async () => {
+    render(
+      <ErrorBoundary>
+        <IntlProvider locale="ko" messages={koMsg}>
+          <HomeScreen {...TEST_PROPS} />
+        </IntlProvider>
+      </ErrorBoundary>,
+    );
+    // 리스트 아이템 추가버튼 클릭
+    // await act(() => {
+    //   fireEvent.press();
+    // });
   });
 });
