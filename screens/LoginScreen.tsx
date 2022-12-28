@@ -44,7 +44,7 @@ function LoginScreen({ route, navigation }: LoginProps) {
         email,
       };
     });
-    Alert.alert('알림', '로그인 완료.', [
+    Alert.alert('Notification', 'Login Finished.', [
       { text: 'OK', onPress: () => navigation.navigate('Profile') },
     ]);
     navigation.navigate('Profile');
