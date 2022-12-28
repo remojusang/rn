@@ -15,7 +15,7 @@ export type LoginProps = NativeStackScreenProps<
   'Login'
 >;
 
-export interface ILoginForm {
+interface ILoginForm {
   email: string;
   password: string;
 }
@@ -44,7 +44,7 @@ function LoginScreen({ route, navigation }: LoginProps) {
         email,
       };
     });
-    Alert.alert('알림', '로그인 완료.', [
+    Alert.alert('Notification', 'Login Finished.', [
       { text: 'OK', onPress: () => navigation.navigate('Profile') },
     ]);
     navigation.navigate('Profile');

@@ -11,6 +11,13 @@
     "signUpBtn": "회원가입",
     "home": "홈",
     "camera": "카메라",
-    "profile": "프로필"
+    "profile": "프로필",
+    "personAdd": "추가",
+    "nameLabel": "이름",
+    "ageLabel": "나이",
+    "ageConstraintslabel": "숫자만 입력",
+    "genderLabel": "성별",
+    "male": "남성",
+    "female": "여성"
 }
   

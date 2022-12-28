@@ -20,7 +20,7 @@ function ProfileScreen({ navigation }: DetailProps) {
   const handlePress = () => {
     setIsLoggedIn(false);
     setUserInfo(null);
-    Alert.alert('알림', '로그아웃 완료.', [
+    Alert.alert('Notification', 'Logout Finished.', [
       { text: 'OK', onPress: () => navigation.navigate('Home') },
     ]);
   };

@@ -3,7 +3,7 @@ import ScreenLayout from '../components/ScreenLayout';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Text, ScrollView, RefreshControl } from 'react-native';
 import { RootStackParamList } from '../utils/types';
-import { Pressable } from 'react-native';
+import { Pressable, Alert } from 'react-native';
 import TabIcon from '../components/TabIcon';
 import { useSetRecoilState } from 'recoil';
 import { personDataState } from '../components/Atoms';
@@ -24,10 +24,20 @@ function DetailScreen({ route, navigation }: DetailProps) {
     }
   }, [navigation, route]);
   const handlePress = () => {
-    setPersonData(prev =>
-      prev.filter(({ name }) => route.params.name !== name),
-    );
-    navigation.navigate('Home');
+    Alert.alert('Notification', 'Are you sure to delete?', [
+      {
+        text: 'OK',
+        onPress: () => {
+          setPersonData(prev =>
+            prev.filter(({ name }) => route.params.name !== name),
+          );
+          navigation.navigate('Home');
+        },
+      },
+      {
+        text: 'Cancel',
+      },
+    ]);
   };
   const onRefresh = () => {
     setRefreshing(true);

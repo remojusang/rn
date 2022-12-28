@@ -34,7 +34,7 @@ function SignScreen({ navigation }: SignProps) {
     ) {
       return;
     }
-    Alert.alert('알림', '회원가입 완료.', [
+    Alert.alert('Notification', 'Signup Finished.', [
       {
         text: 'OK',
         onPress: () =>

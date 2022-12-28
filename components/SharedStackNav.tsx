@@ -5,6 +5,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignScreen from '../screens/SignScreen';
 import CameraScreen from '../screens/CameraScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import PersonForm from '../screens/PersonForm';
 import { RootStackParamList } from '../utils/types';
 import { useIntl } from 'react-intl';
 
@@ -53,6 +54,13 @@ export default function SharedStackNav({ screenName }: Props) {
           options={{ title: formatMessage({ id: 'profile' }) }}
         />
       )}
+      <Stack.Screen
+        name="PersonForm"
+        component={PersonForm}
+        options={{
+          title: formatMessage({ id: 'personAdd' }),
+        }}
+      />
       <Stack.Screen
         name="Sign"
         component={SignScreen}
