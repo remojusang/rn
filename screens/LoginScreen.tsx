@@ -15,7 +15,7 @@ export type LoginProps = NativeStackScreenProps<
   'Login'
 >;
 
-export interface ILoginForm {
+interface ILoginForm {
   email: string;
   password: string;
 }

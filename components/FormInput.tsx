@@ -19,7 +19,13 @@ import { useIntl } from 'react-intl';
 
 interface Props {
   constraintslabel?: string;
-  name: 'email' | 'password' | 'passwordCheck' | 'phone';
+  name:
+    | 'email'
+    | 'password'
+    | 'passwordCheck'
+    | 'phone'
+    | 'name'
+    | 'age';
   errorMsg?: string;
   textInputConfig: ITextInputConfig;
   control: Control<any>;

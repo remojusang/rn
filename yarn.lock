@@ -1898,6 +1898,14 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
+"@types/react-native-simple-radio-button@^2.7.2":
+  "integrity" "sha512-iH/EBAtH2XznNvh+eCNeIl2c1fW5ZGGe6XC4qcNCiqO7oBHVQuyCTrtg+xEN3uxwxxYFb8EXa0hez1UqOKSJiw=="
+  "resolved" "https://registry.npmjs.org/@types/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.2.tgz"
+  "version" "2.7.2"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native-vector-icons@^6.4.12":
   "integrity" "sha512-gSXtv3NMOsRwSXJ/gvGebm7CNjHbkeFKCse9h/Pvi+x2yjCLOkJR1FBfec06DhaFJpsK7Y8WRQpwOS0eLqx5Rg=="
   "resolved" "https://registry.npmjs.org/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.12.tgz"
@@ -6285,6 +6293,11 @@
   "integrity" "sha512-M3urU+Q3H5KbJfkvB6adatTm0s5vsIly+cq6StGzr6AoQMoXa//4KZ+kgKtQ06r3t1O0A6Vx51xDSZw813xilw=="
   "resolved" "https://registry.npmjs.org/react-native-select-dropdown/-/react-native-select-dropdown-3.1.0.tgz"
   "version" "3.1.0"
+
+"react-native-simple-radio-button@^2.7.4":
+  "integrity" "sha512-QOZNmJUn0ViBGU+at7wAG/uGzd5PfXi0kMHr9lfTCLXknW/f9f2fOVjxjdHvOCdf/zA/eMJBjGjtusSDzQf1+w=="
+  "resolved" "https://registry.npmjs.org/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.4.tgz"
+  "version" "2.7.4"
 
 "react-native-vector-icons@^9.2.0":
   "integrity" "sha512-wKYLaFuQST/chH3AJRjmOLoLy3JEs1JR6zMNgTaemFpNoXs0ztRnTxcxFD9xhX7cJe1/zoN5BpQYe7kL0m5yyA=="

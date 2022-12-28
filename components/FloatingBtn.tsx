@@ -1,17 +1,12 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import TabIcon from './TabIcon';
-import { useSetRecoilState } from 'recoil';
-import { personDataState } from '../components/Atoms';
+import { useNavigation } from '@react-navigation/native';
 
 function FloatingBtn() {
-  const setPersonData = useSetRecoilState(personDataState);
+  const navigation = useNavigation<any>();
   const handlePress = () => {
-    // 샘플데이터 추가
-    setPersonData(prev => [
-      ...prev,
-      { name: `Test${new Date()}`, age: 80, gender: 'male' },
-    ]);
+    navigation.navigate('PersonForm');
   };
   return (
     <Pressable

@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     marginBottom: 5,
+    textTransform: 'capitalize',
   },
   gender: {
     color: 'white',

@@ -11,5 +11,12 @@
     "signUpBtn": "Sign up",
     "home": "Home",
     "camera": "Camera",
-    "profile": "Profile"
+    "profile": "Profile",
+    "personAdd": "Add",
+    "nameLabel": "Name",
+    "ageLabel": "Age",
+    "ageConstraintslabel": "Numbers only",
+    "genderLabel": "Gender",
+    "male": "male",
+    "female": "female"
 }
