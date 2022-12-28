@@ -1,7 +1,12 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import FormLayout from '../components/FormLayout';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { TextInput } from 'react-native';
+import {
+  TextInput,
+  ActivityIndicator,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import { RootStackParamList, PersonType } from '../utils/types';
 import { useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
@@ -10,9 +15,9 @@ import FlexGap from '../components/FlexGap';
 import FormInput from '../components/FormInput';
 import RadioBtns from '../components/RadioBtns';
 import { useIntl } from 'react-intl';
-import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { ActivityIndicator } from 'react-native';
+import { ACCESS_HINT } from '../utils/constants';
+
 type PersonFormProps = NativeStackScreenProps<
   RootStackParamList,
   'PersonForm'
@@ -36,7 +41,7 @@ function PersonForm({ navigation }: PersonFormProps) {
     if (!gender) {
       return;
     }
-    setPersonData(prev => [...prev, { name, age, gender }]);
+    setPersonData(prev => [{ name, age, gender }, ...prev]);
     navigation.navigate('Home');
   };
   const HeaderRightLoader = useCallback(
@@ -88,6 +93,11 @@ function PersonForm({ navigation }: PersonFormProps) {
         valueArray={['male', 'female']}
         setter={setGender}
       />
+      <TouchableOpacity
+        onPress={handleSubmit(onValid)}
+        accessibilityHint={ACCESS_HINT.ADD_BTN}>
+        <Text>TestingBtn</Text>
+      </TouchableOpacity>
     </FormLayout>
   );
 }

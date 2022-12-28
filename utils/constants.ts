@@ -30,7 +30,9 @@ const FORM_ERR_MSG: IndexStringObject = {
 const ACCESS_HINT: IndexStringObject = {
   LOADER: 'loader',
   PW: 'password',
-  PW_CHECK: 'password_check',
+  PW_CHECK: 'passwordCheck',
+  ADD_BTN: 'addBtn',
+  FLOATING_BTN: 'floatingBtn',
 } as const;
 
 const COUNTRIES = ['한글', 'English', '日本語'];

@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable } from 'react-native';
 import TabIcon from './TabIcon';
 import { useNavigation } from '@react-navigation/native';
+import { ACCESS_HINT } from '../utils/constants';
 
 function FloatingBtn() {
   const navigation = useNavigation<any>();
@@ -10,6 +11,7 @@ function FloatingBtn() {
   };
   return (
     <Pressable
+      accessibilityHint={ACCESS_HINT.FLOATING_BTN}
       style={{
         backgroundColor: '#82C3EC',
         borderRadius: 30,
