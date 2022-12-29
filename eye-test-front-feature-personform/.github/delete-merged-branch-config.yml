@@ -1,0 +1,8 @@
+exclude:
+  - main
+  - master
+  - release
+  - develop
+  - hotifx
+  - Feature-sub*
+delete_closed_pr: true
