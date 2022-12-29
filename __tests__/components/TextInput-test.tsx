@@ -147,7 +147,109 @@ describe('TextInput', () => {
     // 정규표현식 검사 성공시
     expect(await screen.queryByText(FORM_ERR_MSG.phone)).toBeNull();
   });
+  test('정규표현식 검사 - 이름', async () => {
+    const NAME_PLACEHOLDER = 'enter your name...';
+    const INCORRECT_NAME = '1234';
+    const CORRECT_NAME = 'james';
+    const TestComponent = () => {
+      const { formState, control } = useForm<{ name: string }>({
+        mode: 'onChange',
+      });
+      return (
+        <ErrorBoundary>
+          <FormInput
+            name="name"
+            errorMsg={formState.errors.name?.message}
+            control={control}
+            textInputConfig={{
+              placeholder: NAME_PLACEHOLDER,
+            }}
+          />
+          ;
+        </ErrorBoundary>
+      );
+    };
 
+    render(
+      <IntlProvider locale="ko" messages={koMsg}>
+        <ErrorBoundary>
+          <TestComponent />
+        </ErrorBoundary>
+        ,
+      </IntlProvider>,
+    );
+
+    await act(async () => {
+      await fireEvent.changeText(
+        screen.getByPlaceholderText(NAME_PLACEHOLDER),
+        INCORRECT_NAME,
+      );
+    });
+
+    // 정규표현식 검사 실패시
+    expect(await screen.findByText(FORM_ERR_MSG.name)).toBeVisible();
+
+    await act(async () => {
+      await fireEvent.changeText(
+        await screen.findByPlaceholderText(NAME_PLACEHOLDER),
+        CORRECT_NAME,
+      );
+    });
+
+    // 정규표현식 검사 성공시
+    expect(await screen.queryByText(FORM_ERR_MSG.name)).toBeNull();
+  });
+  test('정규표현식 검사 - 나이', async () => {
+    const AGE_PLACEHOLDER = 'enter your age...';
+    const INCORRECT_AGE = '1234';
+    const CORRECT_AGE = '23';
+    const TestComponent = () => {
+      const { formState, control } = useForm<{ age: string }>({
+        mode: 'onChange',
+      });
+      return (
+        <ErrorBoundary>
+          <FormInput
+            name="age"
+            errorMsg={formState.errors.age?.message}
+            control={control}
+            textInputConfig={{
+              placeholder: AGE_PLACEHOLDER,
+            }}
+          />
+        </ErrorBoundary>
+      );
+    };
+
+    render(
+      <IntlProvider locale="ko" messages={koMsg}>
+        <ErrorBoundary>
+          <TestComponent />
+        </ErrorBoundary>
+        ,
+      </IntlProvider>,
+    );
+
+    await act(async () => {
+      await fireEvent.changeText(
+        screen.getByPlaceholderText(AGE_PLACEHOLDER),
+        INCORRECT_AGE,
+      );
+    });
+
+    // 정규표현식 검사 실패시
+    expect(await screen.findByText(FORM_ERR_MSG.age)).toBeVisible();
+
+    await act(async () => {
+      await fireEvent.changeText(
+        await screen.findByPlaceholderText(AGE_PLACEHOLDER),
+        CORRECT_AGE,
+      );
+    });
+
+    // 정규표현식 검사 성공시
+    expect(await screen.queryByText(FORM_ERR_MSG.age)).toBeNull();
+  });
   test('onChangeText 검사', async () => {
     const TestComponent = () => {
       const { control } = useForm<{ email: string }>({
