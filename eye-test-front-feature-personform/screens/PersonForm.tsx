@@ -5,7 +5,7 @@ import {
   TextInput,
   ActivityIndicator,
   TouchableOpacity,
-  Text,
+  // Text,
 } from 'react-native';
 import { RootStackParamList, PersonType } from '../utils/types';
 import { useForm } from 'react-hook-form';
@@ -16,7 +16,7 @@ import FormInput from '../components/FormInput';
 import RadioBtns from '../components/RadioBtns';
 import { useIntl } from 'react-intl';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { ACCESS_HINT } from '../utils/constants';
+// import { ACCESS_HINT } from '../utils/constants';
 
 type PersonFormProps = NativeStackScreenProps<
   RootStackParamList,
@@ -93,11 +93,12 @@ function PersonForm({ navigation }: PersonFormProps) {
         valueArray={['male', 'female']}
         setter={setGender}
       />
-      <TouchableOpacity
+      {/* 테스트 코드용 버튼 / PersonForm-test 실행시 주석제거 */}
+      {/* <TouchableOpacity
         onPress={handleSubmit(onValid)}
         accessibilityHint={ACCESS_HINT.ADD_BTN}>
         <Text>TestingBtn</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </FormLayout>
   );
 }

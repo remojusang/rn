@@ -1,0 +1,22 @@
+{
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "passwordConstraintslabel": "8 to 16 letters of uppercase and lowercase letters and numbers",
+    "passwordCheckLabel": "Passowrd check",
+    "phoneLabel": "Phone",
+    "phoneConstraintslabel": "Enter only numbers including hyphens",
+    "tos": "By clicking the sign up button below, you agree to the Terms of Use and Privacy Policy.",
+    "loginBtn": "Login",
+    "googleBtn": "Login with Google",
+    "signUpBtn": "Sign up",
+    "home": "Home",
+    "camera": "Camera",
+    "profile": "Profile",
+    "personAdd": "Add",
+    "nameLabel": "Name",
+    "ageLabel": "Age",
+    "ageConstraintslabel": "Numbers only",
+    "genderLabel": "Gender",
+    "male": "male",
+    "female": "female"
+}
