@@ -8,4 +8,6 @@
 
 4. 테스트 코드 작성 (렌더링, 유효성검사, 이벤트핸들러)
 
+5. 로그인 성공시 로그인 여부 및 유저정보를 async-storage와 recoil state로 저장
+
 * [LoginScreen](../screens/LoginScreen.tsx)
