@@ -11,7 +11,7 @@ import { useIntl } from 'react-intl';
 import { useRecoilValue } from 'recoil';
 import { localeState } from '../components/Atoms';
 import FlexGap from '../components/FlexGap';
-import { signUp } from '../utils/auth';
+import { signUp } from '../utils/firebase/auth';
 
 type SignProps = NativeStackScreenProps<RootStackParamList, 'Sign'>;
 

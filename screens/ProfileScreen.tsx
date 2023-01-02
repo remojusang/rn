@@ -6,7 +6,7 @@ import { Pressable } from 'react-native';
 import TabIcon from '../components/TabIcon';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isLoggedInState, userInfoState } from '../components/Atoms';
-import { signOut } from '../utils/auth';
+import { signOut } from '../utils/firebase/auth';
 
 type DetailProps = NativeStackScreenProps<
   RootStackParamList,

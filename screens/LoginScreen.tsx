@@ -9,7 +9,7 @@ import FormLayout from '../components/FormLayout';
 import FlexGap from '../components/FlexGap';
 import { isLoggedInState, userInfoState } from '../components/Atoms';
 import { useSetRecoilState } from 'recoil';
-import { signIn } from '../utils/auth';
+import { signIn } from '../utils/firebase/auth';
 import { AUTH_MSG } from '../utils/constants';
 import ErrorAlert from '../components/ErrorAlert';
 
