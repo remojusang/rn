@@ -6,23 +6,23 @@ import { Pressable } from 'react-native';
 import TabIcon from '../components/TabIcon';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isLoggedInState, userInfoState } from '../components/Atoms';
+import { signOut } from '../utils/auth';
 
 type DetailProps = NativeStackScreenProps<
   RootStackParamList,
   'Profile'
 >;
 
-function ProfileScreen({ navigation }: DetailProps) {
+function ProfileScreen({}: DetailProps) {
   const userInfo = useRecoilValue(userInfoState);
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
   const setUserInfo = useSetRecoilState(userInfoState);
 
-  const handlePress = () => {
+  const handlePress = async () => {
+    await signOut();
     setIsLoggedIn(false);
     setUserInfo(null);
-    Alert.alert('Notification', 'Logout Finished.', [
-      { text: 'OK', onPress: () => navigation.navigate('Home') },
-    ]);
+    Alert.alert('Notification', '로그아웃 완료.', [{ text: 'OK' }]);
   };
   return (
     <ScreenLayout isLoading={false}>

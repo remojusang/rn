@@ -48,9 +48,7 @@ function LoginScreen({ route, navigation }: LoginProps) {
           email,
         };
       });
-      Alert.alert('Notification', 'Login Finished.', [
-        { text: 'OK' },
-      ]);
+      Alert.alert('Notification', '로그인 완료.', [{ text: 'OK' }]);
     } catch (e: any) {
       const err_msg = AUTH_MSG[e.code] || 'login failed';
       ErrorAlert(err_msg);
