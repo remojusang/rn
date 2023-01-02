@@ -6,7 +6,12 @@ install! 'cocoapods', :deterministic_uuids => false
 
 target 'EyeTest' do
   config = use_native_modules!
-
+  pod 'FirebaseAppCheckInterop', :modular_headers => true
+  pod 'FirebaseAuthInterop', :modular_headers => true
+  pod 'FirebaseCore', :modular_headers => true
+  pod 'FirebaseCoreExtension', :modular_headers => true
+  pod 'GTMSessionFetcher', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
   # Flags change depending on the env values.
   flags = get_default_flags()
 
