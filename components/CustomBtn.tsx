@@ -7,7 +7,6 @@ import {
   Image,
   View,
   ImageStyle,
-  TextStyle,
 } from 'react-native';
 import { ACCESS_HINT } from '../utils/constants';
 import { useIntl } from 'react-intl';
@@ -29,7 +28,7 @@ function CustomBtn({
 }: Props) {
   const { formatMessage } = useIntl();
   return (
-    <View style={styles().container}>
+    <View style={styles.container}>
       {!isGoogle ? (
         <Pressable
           onPress={onPress}
@@ -48,7 +47,7 @@ function CustomBtn({
               color="white"
             />
           ) : (
-            <Text style={styles().defaultText}>
+            <Text style={styles.text}>
               {formatMessage({ id: title })}
             </Text>
           )}
@@ -58,7 +57,7 @@ function CustomBtn({
           onPress={onPress}
           style={({ pressed }) =>
             !pressed
-              ? styles().googleBtn
+              ? styles.googleBtn
               : {
                   ...btnStyle,
                   opacity: 0.7,
@@ -71,12 +70,12 @@ function CustomBtn({
               accessibilityHint={ACCESS_HINT.LOADER}
             />
           ) : (
-            <View style={styles().btnLayout}>
+            <View style={styles.btnLayout}>
               <Image
-                style={styles().logo as ImageStyle}
+                style={styles.logo as ImageStyle}
                 source={require('../assets/google_logo.png')}
               />
-              <Text style={styles().googleText}>
+              <Text style={styles.text}>
                 {formatMessage({ id: title })}
               </Text>
             </View>
@@ -98,34 +97,26 @@ const btnStyle: IBtnStyle = {
   borderRadius: 10,
   padding: 12,
 };
-
-const styles = () => {
-  const textStyle = {
+const styles = StyleSheet.create({
+  text: {
     color: 'white',
     textAlign: 'center',
     fontSize: 16,
     fontWeight: 'bold',
-  } as TextStyle;
-
-  return StyleSheet.create({
-    container: {
-      width: '100%',
-    },
-    btnLayout: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    logo: {
-      marginRight: 10,
-    },
-    googleBtn: {
-      ...btnStyle,
-      backgroundColor: '#4649FF',
-    },
-    defaultText: { ...textStyle },
-    googleText: {
-      ...textStyle,
-    },
-  });
-};
+  },
+  container: {
+    width: '100%',
+  },
+  btnLayout: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    marginRight: 10,
+  },
+  googleBtn: {
+    ...btnStyle,
+    backgroundColor: '#4649FF',
+  },
+});
