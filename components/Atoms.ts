@@ -48,12 +48,8 @@ export const isLoggedInState = atom({
   effects: [asyncStorageEffect('isLoggedIn')],
 });
 
-interface IUserInfo {
-  email: string;
-}
-
-export const userInfoState = atom<IUserInfo | null>({
-  key: 'userInfo',
+export const uidState = atom<string | null>({
+  key: 'uid',
   default: null,
-  effects: [asyncStorageEffect('userInfo')],
+  effects: [asyncStorageEffect('uid')],
 });

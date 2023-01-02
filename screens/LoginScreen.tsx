@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import CustomBtn from '../components/CustomBtn';
 import FormLayout from '../components/FormLayout';
 import FlexGap from '../components/FlexGap';
-import { isLoggedInState, userInfoState } from '../components/Atoms';
+import { isLoggedInState, uidState } from '../components/Atoms';
 import { useSetRecoilState } from 'recoil';
 import { signIn } from '../utils/firebase/auth';
 import { AUTH_MSG } from '../utils/constants';
@@ -34,20 +34,17 @@ function LoginScreen({ route, navigation }: LoginProps) {
     }
   }, [navigation, route, setValue]);
   const setisLoggedIn = useSetRecoilState(isLoggedInState);
-  const setUserInfo = useSetRecoilState(userInfoState);
+  const setUid = useSetRecoilState(uidState);
   const pwRef = useRef<TextInput>(null);
   const [signInLoading, setSignInLoading] = useState(false);
   const onValid = async ({ email, password }: ILoginForm) => {
     try {
       setSignInLoading(true);
-      await signIn({ email, password });
+      const {
+        user: { uid },
+      } = await signIn({ email, password });
+      setUid(uid);
       setisLoggedIn(true);
-      setUserInfo(prev => {
-        return {
-          ...prev,
-          email,
-        };
-      });
       Alert.alert('Notification', '로그인 완료.', [{ text: 'OK' }]);
     } catch (e: any) {
       const err_msg = AUTH_MSG[e.code] || 'login failed';

@@ -5,8 +5,10 @@ import { RootStackParamList } from '../utils/types';
 import { Pressable } from 'react-native';
 import TabIcon from '../components/TabIcon';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { isLoggedInState, userInfoState } from '../components/Atoms';
+import { isLoggedInState, uidState } from '../components/Atoms';
 import { signOut } from '../utils/firebase/auth';
+import { IProfile, getProfile } from '../utils/firebase/users';
+import { useEffect, useState } from 'react';
 
 type DetailProps = NativeStackScreenProps<
   RootStackParamList,
@@ -14,21 +16,21 @@ type DetailProps = NativeStackScreenProps<
 >;
 
 function ProfileScreen({}: DetailProps) {
-  const userInfo = useRecoilValue(userInfoState);
+  const [profile, setProfile] = useState<IProfile | null>(null);
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
-  const setUserInfo = useSetRecoilState(userInfoState);
-
+  const uid = useRecoilValue(uidState) as string;
+  useEffect(() => {
+    getProfile(uid).then(setProfile);
+  }, []);
   const handlePress = async () => {
     await signOut();
     setIsLoggedIn(false);
-    setUserInfo(null);
     Alert.alert('Notification', '로그아웃 완료.', [{ text: 'OK' }]);
   };
   return (
     <ScreenLayout isLoading={false}>
       <Text style={{ color: '#fff', fontSize: 20 }}>
-        email: {'\n'}
-        {userInfo?.email}
+        {profile?.uid}
       </Text>
       <Pressable
         style={{
