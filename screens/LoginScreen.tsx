@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { View, StyleSheet, TextInput, Alert } from 'react-native';
 import FormInput from '../components/FormInput';
@@ -9,6 +9,9 @@ import FormLayout from '../components/FormLayout';
 import FlexGap from '../components/FlexGap';
 import { isLoggedInState, userInfoState } from '../components/Atoms';
 import { useSetRecoilState } from 'recoil';
+import { signIn } from '../utils/auth';
+import { AUTH_MSG } from '../utils/constants';
+import ErrorAlert from '../components/ErrorAlert';
 
 export type LoginProps = NativeStackScreenProps<
   RootStackParamList,
@@ -33,21 +36,27 @@ function LoginScreen({ route, navigation }: LoginProps) {
   const setisLoggedIn = useSetRecoilState(isLoggedInState);
   const setUserInfo = useSetRecoilState(userInfoState);
   const pwRef = useRef<TextInput>(null);
-  const onValid = ({ email, password }: ILoginForm) => {
-    if (email !== 'test123@naver.com' || password !== 'remo1234') {
-      return;
+  const [signInLoading, setSignInLoading] = useState(false);
+  const onValid = async ({ email, password }: ILoginForm) => {
+    try {
+      setSignInLoading(true);
+      await signIn({ email, password });
+      setisLoggedIn(true);
+      setUserInfo(prev => {
+        return {
+          ...prev,
+          email,
+        };
+      });
+      Alert.alert('Notification', 'Login Finished.', [
+        { text: 'OK' },
+      ]);
+    } catch (e: any) {
+      const err_msg = AUTH_MSG[e.code] || 'login failed';
+      ErrorAlert(err_msg);
+    } finally {
+      setSignInLoading(false);
     }
-    setisLoggedIn(true);
-    setUserInfo(prev => {
-      return {
-        ...prev,
-        email,
-      };
-    });
-    Alert.alert('Notification', 'Login Finished.', [
-      { text: 'OK', onPress: () => navigation.navigate('Profile') },
-    ]);
-    navigation.navigate('Profile');
   };
   return (
     <FormLayout>
@@ -74,7 +83,7 @@ function LoginScreen({ route, navigation }: LoginProps) {
         />
         <FlexGap gapSize={10} />
         <CustomBtn
-          isLoading={false}
+          isLoading={signInLoading}
           title="loginBtn"
           onPress={handleSubmit(onValid)}
         />

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef, useState } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../utils/types';
 import { Text, StyleSheet, TextInput, Alert } from 'react-native';
@@ -11,6 +11,7 @@ import { useIntl } from 'react-intl';
 import { useRecoilValue } from 'recoil';
 import { localeState } from '../components/Atoms';
 import FlexGap from '../components/FlexGap';
+import { signUp } from '../utils/auth';
 
 type SignProps = NativeStackScreenProps<RootStackParamList, 'Sign'>;
 
@@ -26,14 +27,11 @@ function SignScreen({ navigation }: SignProps) {
   const phoneRef = useRef<TextInput>(null);
   const { formState, handleSubmit, control, getValues } =
     useForm<ISignForm>({ mode: 'onChange' });
-  const onValid = ({ email, password, phone }: ISignForm) => {
-    if (
-      email !== 'test123@naver.com' ||
-      password !== 'remo1234' ||
-      phone !== '010-1234-5678'
-    ) {
-      return;
-    }
+  const [signUpLoading, setSignUpLoading] = useState(false);
+  const onValid = async ({ email, password }: ISignForm) => {
+    setSignUpLoading(true);
+    await signUp({ email, password });
+    setSignUpLoading(false);
     Alert.alert('Notification', 'Signup Finished.', [
       {
         text: 'OK',
@@ -124,7 +122,7 @@ function SignScreen({ navigation }: SignProps) {
           </Text>
         )}
         <CustomBtn
-          isLoading={false}
+          isLoading={signUpLoading}
           title="signUpBtn"
           onPress={handleSubmit(onValid)}
         />
