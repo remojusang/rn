@@ -19,7 +19,10 @@ function FormLayout({ children }: Props) {
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView
           style={{ width: '100%' }}
-          behavior="position"
+          behavior={Platform.select({
+            ios: 'position',
+            android: undefined,
+          })}
           keyboardVerticalOffset={Platform.OS === 'ios' ? 50 : 0}>
           {children}
         </KeyboardAvoidingView>
