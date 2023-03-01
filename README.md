@@ -11,6 +11,7 @@
 - 로그인 / 회원가입 screen에서 유효성 검사 및 에러 대응 처리를 하였습니다.
 - 모든 screen과 component에 대하여 테스트 코드를 작성 하였습니다.
 - asyncStorageEffect을 사용하여 client-side의 state를 atom 및 AsyncStorage에 저장하였습니다.
+- react-intl로 다국어 지원 기능을 구현 하였습니다. 
 
 ## 📕 기능목록
 
